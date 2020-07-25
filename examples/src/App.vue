@@ -1,14 +1,12 @@
 <template>
   <div id="app">
     <CloudImageProvider v-bind:cloudImageConfig="cloudImageConfig">
-
       <section class="home">
         <div class="container">
           <a
             class="logo"
             href="https://scaleflex.github.io/react-cloudimage-responsive/"
-            >Vue Cloudimage Responsive</a
-          >
+          >Vue Cloudimage Responsive</a>
           <p>(Low quality preview version)</p>
           <div class="reference-buttons">
             <a
@@ -17,24 +15,21 @@
               href="https://github.com/Scaleflex/react-cloudimage-responsive/subscription"
               data-icon="octicon-eye"
               aria-label="Watch Scaleflex/react-cloudimage-responsive on GitHub"
-              >Watch</a
-            >
+            >Watch</a>
             <a
               class="github-button"
               target="_blank"
               href="https://github.com/Scaleflex/react-cloudimage-responsive"
               data-icon="octicon-star"
               aria-label="Star Scaleflex/react-cloudimage-responsive on GitHub"
-              >Star</a
-            >
+            >Star</a>
             <a
               class="github-button"
               target="_blank"
               href="https://github.com/Scaleflex/react-cloudimage-responsive/fork"
               data-icon="octicon-repo-forked"
               aria-label="Fork Scaleflex/react-cloudimage-responsive on GitHub"
-              >Fork</a
-            >
+            >Fork</a>
             <a
               class="twitter-share-button btn btn-info"
               target="_blank"
@@ -44,7 +39,9 @@
               <span>Tweet</span>
             </a>
           </div>
-          <h1><strong>Responsive images</strong>, now easier than ever.</h1>
+          <h1>
+            <strong>Responsive images</strong>, now easier than ever.
+          </h1>
           <h2>
             Make your existing images
             <strong>responsive</strong> without creating new images.
@@ -52,7 +49,8 @@
             one high quality original image and the plugin will{{ ' ' }}
             <strong>resize, compress and accelerate</strong>
             images across the World in your site for all devices. The plugin
-            supports{{ ' ' }} <strong>lazy load</strong> with
+            supports{{ ' ' }}
+            <strong>lazy load</strong> with
             <strong>fancy animation</strong>
             {{ ' ' }}
             on image load.
@@ -63,21 +61,16 @@
               href="https://github.com/scaleflex/react-cloudimage-responsive"
               class="btn btn-primary"
               target="_blank"
-              >View on GitHub</a
-            >
+            >View on GitHub</a>
             <a
               href="https://codesandbox.io/s/1840nl707j"
               style="margin-left: 5px"
               class="btn btn-light"
               target="_blank"
-              >Edit on CodeSandbox</a
-            >
+            >Edit on CodeSandbox</a>
           </div>
         </div>
-        <a
-          href="https://github.com/scaleflex/react-cloudimage-responsive"
-          target="_blank"
-        >
+        <a href="https://github.com/scaleflex/react-cloudimage-responsive" target="_blank">
           <img
             class="fork-me-on-github"
             src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"
@@ -105,7 +98,8 @@
           <ul>
             <li>
               <strong>Resize large images</strong> to the size needed by your
-              design and <strong>generate multiple images</strong> for different
+              design and
+              <strong>generate multiple images</strong> for different
               device screen size
             </li>
             <li>
@@ -134,7 +128,8 @@
         <p>
           The plugin detects the
           <strong>width of image's container</strong>
-          {{ ' ' }} and <strong>pixel ratio density</strong> of your device to
+          {{ ' ' }} and
+          <strong>pixel ratio density</strong> of your device to
           load the exact image size you need. It
           <strong>processes</strong>
           images via{{ ' ' }}
@@ -159,8 +154,7 @@
           Read the following{{ ' ' }}
           <a
             href="https://medium.com/cloudimage/cloudimage-resizes-your-images-saves-time-accelerates-your-website-and-increases-your-conversion-eb128903d4c2"
-            >article</a
-          >
+          >article</a>
           {{ ' ' }} to learn more about Cloudimage.io service.
         </p>
       </section>
@@ -179,8 +173,7 @@
             <a
               target="_blank"
               href="https://cdn.scaleflex.it/demo/redcharlie.jpg"
-              >link</a
-            >
+            >link</a>
             {{ ' ' }}
             In the table below we can see what size and resolution will be
             loaded depending on the image's container.
@@ -205,8 +198,7 @@
                   <a
                     target="_blank"
                     href="https://demo.cloudimg.io/width/400/q35.foil1/https://cdn.scaleflex.it/demo/redcharlie.jpg"
-                    >link</a
-                  >
+                  >link</a>
                 </td>
               </tr>
               <tr>
@@ -217,8 +209,7 @@
                   <a
                     target="_blank"
                     href="https://demo.cloudimg.io/width/800/q35.foil1/https://cdn.scaleflex.it/demo/redcharlie.jpg"
-                    >link</a
-                  >
+                  >link</a>
                 </td>
               </tr>
 
@@ -231,8 +222,7 @@
                   <a
                     target="_blank"
                     href="https://demo.cloudimg.io/width/600/q35.foil1/https://cdn.scaleflex.it/demo/redcharlie.jpg"
-                    >link</a
-                  >
+                  >link</a>
                 </td>
               </tr>
               <tr>
@@ -243,8 +233,7 @@
                   <a
                     target="_blank"
                     href="https://demo.cloudimg.io/width/1200/q35.foil1/https://cdn.scaleflex.it/demo/redcharlie.jpg"
-                    >link</a
-                  >
+                  >link</a>
                 </td>
               </tr>
 
@@ -257,8 +246,7 @@
                   <a
                     target="_blank"
                     href="https://demo.cloudimg.io/width/800/q35.foil1/https://cdn.scaleflex.it/demo/redcharlie.jpg"
-                    >link</a
-                  >
+                  >link</a>
                 </td>
               </tr>
               <tr>
@@ -269,8 +257,7 @@
                   <a
                     target="_blank"
                     href="https://demo.cloudimg.io/width/1600/q35.foil1/https://cdn.scaleflex.it/demo/redcharlie.jpg"
-                    >link</a
-                  >
+                  >link</a>
                 </td>
               </tr>
 
@@ -283,8 +270,7 @@
                   <a
                     target="_blank"
                     href="https://demo.cloudimg.io/width/1200/q35.foil1/https://cdn.scaleflex.it/demo/redcharlie.jpg"
-                    >link</a
-                  >
+                  >link</a>
                 </td>
               </tr>
               <tr>
@@ -295,8 +281,7 @@
                   <a
                     target="_blank"
                     href="https://demo.cloudimg.io/width/2400/q35.foil1/https://cdn.scaleflex.it/demo/redcharlie.jpg"
-                    >link</a
-                  >
+                  >link</a>
                 </td>
               </tr>
             </tbody>
@@ -334,24 +319,14 @@
             <div class="col-12">
               <div class="container-box-wrapper">
                 <ContainerBox />
-                <Img
-                  v-bind:src="images[8].src"
-                  v-bind:ratio="images[8].ratio"
-                />
+                <Img v-bind:src="images[8].src" v-bind:ratio="images[8].ratio" />
               </div>
             </div>
 
-            <div
-              v-for="(image, index) in imagesSliced"
-              :key="index"
-              class="col-6"
-            >
+            <div v-for="(image, index) in imagesSliced" :key="index" class="col-6">
               <div class="container-box-wrapper">
                 <ContainerBox />
-                <Img
-                  v-bind:src="image.src"
-                  v-bind:ratio="image.ratio"
-                />original:
+                <Img v-bind:src="image.src" v-bind:ratio="image.ratio" />original:
                 <i>{{ image.original_size }}</i>
                 {{ ' ' }}
                 <a
@@ -359,8 +334,7 @@
                     'https://cloudimage.public.airstore.io/demo/' + image.src
                   "
                   target="_blank"
-                  >link</a
-                >
+                >link</a>
                 <br />
               </div>
             </div>
@@ -388,8 +362,7 @@
                       images[17].src
                   "
                   target="_blank"
-                  >link</a
-                >
+                >link</a>
                 <br />
               </small>
             </div>
@@ -399,6 +372,7 @@
                 breakpoints
               </h4>
               <p>Resize your browser window to see how it works</p>
+              <Prism style="prism-dark">{{ syntaxHighlight1 }}</Prism>
             </div>
           </div>
         </div>
@@ -414,22 +388,24 @@
                 <div style=" width: 200px">
                   <div class="container-width-box">
                     container
-                    <span>200</span>x <span>200</span>px
+                    <span>200</span>x
+                    <span>200</span>px
                   </div>
                 </div>
                 <div
                   class="container-box-wrapper"
                   style="
-                      display: 'inline-block';
+                      display: inline-block;
                       width: 200px;
                       height: 200px;
-                      position: 'relative'
+                      position: relative
                     "
                 >
                   <img src="https://doc.cloudimg.io/v7/sample.li/boat.jpg" />
                   <div class="border-box" />
                 </div>
               </div>
+              <Prism>{{syntaxHighlight2}}</Prism>
             </div>
 
             <div class="col-md-4">
@@ -438,22 +414,25 @@
                 <div style=" width: 200px">
                   <div class="container-width-box">
                     container
-                    <span>200</span>x <span>200</span>px
+                    <span>200</span>x
+                    <span>200</span>px
                   </div>
                 </div>
+
                 <div
                   class="container-box-wrapper"
                   style="
-                      display: 'inline-block';
+                      display: inline-block;
                       width: 200px;
                       height: 200px;
-                      position: 'relative'
+                      position: relative
                     "
                 >
                   <Img src="boat.jpg" params="func=crop" />
                   <div class="border-box" />
                 </div>
               </div>
+              <Prism>{{syntaxHighlight3}}</Prism>
             </div>
 
             <div class="col-md-4">
@@ -462,22 +441,24 @@
                 <div style="width: 200px">
                   <div class="container-width-box">
                     container
-                    <span>200</span>x <span>200</span>px
+                    <span>200</span>x
+                    <span>200</span>px
                   </div>
                 </div>
                 <div
                   class="container-box-wrapper"
                   style="
-                      display: 'inline-block';
+                      display: inline-block;
                       width: 200px;
                       height: 200px;
-                      position: 'relative';
+                      position: relative;
                     "
                 >
                   <Img src="boat.jpg" params="func=crop&gravity=auto" />
                   <div class="border-box" />
                 </div>
               </div>
+              <Prism>{{syntaxHighlight4}}</Prism>
             </div>
           </div>
         </div>
@@ -485,6 +466,7 @@
       <section class="ready-to-start">
         <div class="container">
           <h2 class="text-center">Use with background images</h2>
+          <Prism>{{syntaxHighlight5}}</Prism>
         </div>
 
         <BackgroundImg
@@ -519,7 +501,9 @@
         <p>
           To use the plugin, you will need a Cloudimage token. Don't worry, it
           only takes seconds to get one by registering{{ ' ' }}
-          <a href="https://www.cloudimage.io/en/register_page">here</a>. Once
+          <a
+            href="https://www.cloudimage.io/en/register_page"
+          >here</a>. Once
           your token is created, you can configure it as described below. This
           token allows you to use 25GB of image cache and 25GB of worldwide CDN
           traffic per month for free.
@@ -527,18 +511,12 @@
       </section>
       <section class="container">
         <div class="text-center">
-          <div
-            id="plugin-version-switcher"
-            class="plugin-version-switcher btn-group btn-toggle"
-          ></div>
+          <div id="plugin-version-switcher" class="plugin-version-switcher btn-group btn-toggle"></div>
         </div>
       </section>
       <section class="container">
         <div class="text-center">
-          <div
-            id="plugin-version-switcher"
-            className="plugin-version-switcher btn-group btn-toggle"
-          ></div>
+          <div id="plugin-version-switcher" class="plugin-version-switcher btn-group btn-toggle"></div>
         </div>
 
         <div id="js-version-box">
@@ -556,14 +534,19 @@
           <div>
             <div class="action-wrapper second-action">
               <p>
-                initialize it with your <strong>token</strong> and the{{ ' ' }}
-                <strong>baseURL</strong> of your image storage using{{ ' ' }}
+                initialize it with your
+                <strong>token</strong>
+                and the{{ ' ' }}
+                <strong>baseURL</strong>
+                of your image storage using{{ ' ' }}
                 <strong>CloudimageProvider</strong>
               </p>
-
+              <Prism>{{syntaxHighlight6}}</Prism>
               <p>
                 Get your Cloudimage tokens{{ ' ' }}
-                <a href="https://www.cloudimage.io/en/register_page">here</a>.
+                <a
+                  href="https://www.cloudimage.io/en/register_page"
+                >here</a>.
               </p>
             </div>
 
@@ -585,9 +568,7 @@
                 <a
                   href="https://github.com/scaleflex/react-cloudimage-responsive#table-of-contents"
                   target="_blank"
-                >
-                  {{ ' ' }} Visit the full documentation here.
-                </a>
+                >{{ ' ' }} Visit the full documentation here.</a>
               </p>
             </div>
           </div>
@@ -603,7 +584,7 @@
           </p>
         </div>
       </section>
-      <footer>  
+      <footer>
         <div style=" background: #fff ">
           <section class="container ready-to-start filerobot-ui-family">
             <div class="row">
@@ -622,36 +603,31 @@
                     <a
                       target="_blank"
                       href="https://github.com/scaleflex/js-cloudimage-responsive"
-                      >JS Cloudimage Responsive</a
-                    >
+                    >JS Cloudimage Responsive</a>
                   </li>
                   <li>
                     <a
                       target="_blank"
                       href="https://github.com/scaleflex/ng-cloudimage-responsive"
-                      >Angular Cloudimage Responsive</a
-                    >
+                    >Angular Cloudimage Responsive</a>
                   </li>
                   <li>
                     <a
                       target="_blank"
                       href="https://github.com/scaleflex/js-cloudimage-360-view"
-                      >JS Cloudimage 360 view</a
-                    >
+                    >JS Cloudimage 360 view</a>
                   </li>
                   <li>
                     <a
                       target="_blank"
                       href="https://github.com/scaleflex/filerobot-uploader"
-                      >Uploader</a
-                    >
+                    >Uploader</a>
                   </li>
                   <li>
                     <a
                       target="_blank"
                       href="https://github.com/scaleflex/filerobot-image-editor"
-                      >Image Editor</a
-                    >
+                    >Image Editor</a>
                   </li>
                 </ul>
               </div>
@@ -666,16 +642,18 @@
                 <div>
                   Made with ❤ in 2019 in Paris, Munich and Sofia by the
                   Scaleflex team, the guys behind{{ ' ' }}
-                  <a href="https://www.cloudimage.io/en/home" target="_blank"
-                    >Cloudimage.io</a
-                  >
+                  <a
+                    href="https://www.cloudimage.io/en/home"
+                    target="_blank"
+                  >Cloudimage.io</a>
                   .
                 </div>
                 <div style="margin-top: 10px ">
                   Powered by{{ ' ' }}
-                  <a href="https://www.scaleflex.it/en/home" target="_blank"
-                    >Scaleflex team</a
-                  >
+                  <a
+                    href="https://www.scaleflex.it/en/home"
+                    target="_blank"
+                  >Scaleflex team</a>
                   . All rights reserved.
                 </div>
               </div>
@@ -685,22 +663,19 @@
                     <a
                       href="https://github.com/scaleflex/react-cloudimage-responsive"
                       target="_blank"
-                      >View GitHub</a
-                    >
+                    >View GitHub</a>
                   </li>
                   <li>
                     <a
                       href="https://github.com/scaleflex/react-cloudimage-responsive/issues"
                       target="_blank"
-                      >Current Issues</a
-                    >
+                    >Current Issues</a>
                   </li>
                   <li>
                     <a
                       href="https://github.com/scaleflex/react-cloudimage-responsive#table-of-contents"
                       target="_blank"
-                      >Documentation</a
-                    >
+                    >Documentation</a>
                   </li>
                 </ul>
               </div>
@@ -724,19 +699,25 @@
 </template>
 
 <script>
-import ContainerBox from './components/ContainerBox';
-import CloudImageProvider from './provider';
-import Img from './components/Img';
-import BackgroundImg from './components/background';
-import { images } from './mock';
-// import { component as VueCodeHighlight } from 'vue-code-highlight';
+import ContainerBox from "./components/ContainerBox";
+import CloudImageProvider from "../../src/provider";
+import Img from "../../src/Img";
+import BackgroundImg from "../../src/background";
+import { images } from "./mock";
+import "prismjs";
+import "prismjs/themes/prism-okaidia.css";
+import "prismjs/components/prism-scss.min";
+import "prismjs/plugins/autolinker/prism-autolinker.min";
+import "prismjs/plugins/autolinker/prism-autolinker.css";
+import Prism from "vue-prism-component";
+
 // import Prism from 'vue-prism-component';
 
 const cloudImageConfig = {
-  token: 'demo',
-  baseURL: 'https://cloudimage.public.airstore.io/demo/',
-  params: 'ci_info=1&org_if_sml=1',
-  placeholderBackground: '#e1e1e1',
+  token: "demo",
+  baseURL: "https://cloudimage.public.airstore.io/demo/",
+  params: "ci_info=1&org_if_sml=1",
+  placeholderBackground: "#e1e1e1",
   limitFactor: 10,
   lowQualityPreview: {
     minImgWidth: 150
@@ -746,26 +727,84 @@ const cloudImageConfig = {
 const imagesSliced = images.slice(1, 7);
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
     ContainerBox,
     CloudImageProvider,
     Img,
-    BackgroundImg
-    // VueCodeHighlight
-    // Prism
+    BackgroundImg,
+    Prism
   },
-  props: ['cloudimageConfig'],
+  props: ["cloudimageConfig"],
   mounted() {
     const self = this;
 
-    window.addEventListener('resize', () => {
+    window.addEventListener("resize", () => {
       self.innerWidth = window.innerWidth;
     });
   },
 
   data() {
     return {
+      syntaxHighlight1: `<Img
+  src="images[17].src"
+  sizes="{
+    '(max-width: 575px)': { w: 400, h: 150 },
+    '(min-width: 576px)': { r: 1 },
+    '(min-width: 620px)': { h: 560 },
+    '(min-width: 768px)': { w: '50vw' },
+    '(min-width: 992px)': { w: '55vw', h: 300 },
+    '(min-width: 1200px)': { w: 1200 }
+  }"
+/>`,
+      syntaxHighlight2: `<div style=" width: 200px, height: 200px ">
+  <img 
+    src="https://doc.cloudimg.io/v7/sample.li/boat.jpg"
+  />
+</div>`,
+      syntaxHighlight3: `<div style=" width: 200px, height: 200px ">
+  <Img 
+    src="boat.jpg" 
+    params="func=crop"
+  />
+</div>`,
+      syntaxHighlight4: `<div style=" width: 200px, height: 200px ">
+  <Img 
+    src="boat.jpg" 
+    params="func=crop&gravity=auto"
+  />
+</div>`,
+      syntaxHighlight5: `<BackgroundImg
+  src="ameen-fahmy.jpg" 
+  params="func=crop" 
+  style="background: transparent 50% 50% / cover no-repeat">...</BackgroundImg>`,
+
+      syntaxHighlight6: `import Vue from 'vue';
+import Img, { CloudimageProvider } from 'vue-cloudimage-responsive';
+
+const cloudimageConfig = {
+  token: 'demo',
+  baseURL: 'https://jolipage.airstore.io/'
+};
+
+<template>
+<CloudimageProvider config={cloudimageConfig}>
+ <h1>Simple demo of react-cloudimage-responsive</h1>
+<Img src="img.jpg" alt="Demo image" ratio=1.5 />
+</CloudimageProvider>
+</template>
+
+<script>
+'export default{
+    components:{
+    CloudimageProvider,
+    Img
+    }
+}
+'
+< /script>
+`,
+
       images,
       imagesSliced,
       cloudImageConfig,
