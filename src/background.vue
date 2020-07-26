@@ -1,13 +1,30 @@
 <template>
-  <div :class="loadedStyle" :style="container">
-    <div v-if="data.preview" :style="previewBgWrapper">
-      <div :style="previewBg" />
-    </div>
+  <div>
+    <div
+      v-if="properties.config.lazyLoading"
+      v-lazy="data.cloudimgURL"
+      :class="loadedStyle"
+      :style="container"
+    >
+      <div v-if="data.preview" :style="previewBgWrapper">
+        <div :style="previewBg" />
+      </div>
 
-    <div v-if="data.preview" class="cloudimage-background-content" style="position: relative ">
-      <slot></slot>
+      <div v-if="data.preview" class="cloudimage-background-content" style="position: relative ">
+        <slot></slot>
+      </div>
+      <slot v-else></slot>
     </div>
-    <slot v-else></slot>
+    <div v-else :class="loadedStyle" :style="container">
+      <div v-if="data.preview" :style="previewBgWrapper">
+        <div :style="previewBg" />
+      </div>
+
+      <div v-if="data.preview" class="cloudimage-background-content" style="position: relative ">
+        <slot></slot>
+      </div>
+      <slot v-else></slot>
+    </div>
     <div v-if="processed">
       <slot></slot>
     </div>
@@ -19,6 +36,7 @@ import { isServer, processReactNode } from "cloudimage-responsive-utils";
 import styles from "./background.styles";
 import { getFilteredBgProps } from "./utils.js";
 export default {
+  // geting the data from the provider
   inject: ["cloudProvider"],
   props: {
     src: String,
@@ -50,9 +68,22 @@ export default {
   mounted() {
     if (this.server) return;
 
+    const style = this.properties.style;
     const { className } = getFilteredBgProps(this.properties);
+    const cloudimgURL = this.data.cloudimgURL;
+    const previewCloudimgURL = this.data.previewCloudimgURL;
+    const loaded = this.loaded;
+
     this.className = className;
 
+    //initial loading style
+    this.loadedStyle = [this.className, "cloudimage-background", "loading"];
+    //initial value container style
+    this.container = styles.container({ style, cloudimgURL });
+    //initial value preview wrapper style
+    this.previewBgWrapper = styles.previewBgWrapper({ loaded });
+    //initial value preview style
+    this.previewBg = styles.previewBg({ previewCloudimgURL });
     this.processBg();
   },
   methods: {
@@ -96,11 +127,14 @@ export default {
       } = this.properties;
 
       if (oldVal !== innerWidth) {
+        //if width changed update the data from proccesing background image
         this.processBg(true, innerWidth > oldVal);
       }
-
+      //updating value of container style if width changed
       this.container = styles.container({ style, cloudimgURL });
+      //updating value of preview wrapper style if width changed
       this.previewBgWrapper = styles.previewBgWrapper({ loaded });
+      //updating value of preview style if width changed
       this.previewBg = styles.previewBg({ previewCloudimgURL });
     },
     "properties.src": function(newVal, oldVal) {
@@ -111,20 +145,23 @@ export default {
     },
     loaded: function(newVal) {
       const loaded = newVal;
-      if (loaded) {
-        const style = this.properties.style;
-        const cloudimgURL = this.data.cloudimgURL;
-        const previewCloudimgURL = this.data.previewCloudimgURL;
-        const loaded = this.loaded;
+      const style = this.properties.style;
+      const cloudimgURL = this.data.cloudimgURL;
+      const previewCloudimgURL = this.data.previewCloudimgURL;
 
+      if (loaded) {
+        //if loaded change style to loaded
         this.loadedStyle = [this.className, "cloudimage-background", "loaded"]
           .join(" ")
           .trim();
-
+        //updating value of container style if page loaded
         this.container = styles.container({ style, cloudimgURL });
+        //updating value of preview wrapper style if page loaded
         this.previewBgWrapper = styles.previewBgWrapper({ loaded });
+        //updating value of preview style if page loaded
         this.previewBg = styles.previewBg({ previewCloudimgURL });
       } else {
+        //if still loading change to loading
         this.loadedStyle = [this.className, "cloudimage-background", "loading"];
       }
     },
