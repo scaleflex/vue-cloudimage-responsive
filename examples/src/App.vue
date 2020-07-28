@@ -5,35 +5,35 @@
         <div class="container">
           <a
             class="logo"
-            href="https://scaleflex.github.io/react-cloudimage-responsive/"
+            href="https://scaleflex.github.io/vue-cloudimage-responsive/"
           >Vue Cloudimage Responsive</a>
           <p>(Low quality preview version)</p>
           <div class="reference-buttons">
             <a
               class="github-button"
               target="_blank"
-              href="https://github.com/Scaleflex/react-cloudimage-responsive/subscription"
+              href="https://github.com/Scaleflex/vue-cloudimage-responsive/subscription"
               data-icon="octicon-eye"
-              aria-label="Watch Scaleflex/react-cloudimage-responsive on GitHub"
+              aria-label="Watch Scaleflex/vue-cloudimage-responsive on GitHub"
             >Watch</a>
             <a
               class="github-button"
               target="_blank"
-              href="https://github.com/Scaleflex/react-cloudimage-responsive"
+              href="https://github.com/Scaleflex/vue-cloudimage-responsive"
               data-icon="octicon-star"
-              aria-label="Star Scaleflex/react-cloudimage-responsive on GitHub"
+              aria-label="Star Scaleflex/vue-cloudimage-responsive on GitHub"
             >Star</a>
             <a
               class="github-button"
               target="_blank"
-              href="https://github.com/Scaleflex/react-cloudimage-responsive/fork"
+              href="https://github.com/Scaleflex/vue-cloudimage-responsive/fork"
               data-icon="octicon-repo-forked"
-              aria-label="Fork Scaleflex/react-cloudimage-responsive on GitHub"
+              aria-label="Fork Scaleflex/vue-cloudimage-responsive on GitHub"
             >Fork</a>
             <a
               class="twitter-share-button btn btn-info"
               target="_blank"
-              href="https://twitter.com/intent/tweet?text=Responsive%20images,%20now%20easier%20than%20ever&url=https://scaleflex.github.io/react-cloudimage-responsive/&via=cloudimage&hashtags=images,cloudimage,responsive_images,lazy_loading,web_acceleration,image_optimization,image_CDN,image_CDNwebp,jpeg_xr,jpg_optimization,image_resizing_and_CDN,cropresize"
+              href="https://twitter.com/intent/tweet?text=Responsive%20images,%20now%20easier%20than%20ever&url=https://scaleflex.github.io/vue-cloudimage-responsive/&via=cloudimage&hashtags=images,cloudimage,responsive_images,lazy_loading,web_acceleration,image_optimization,image_CDN,image_CDNwebp,jpeg_xr,jpg_optimization,image_resizing_and_CDN,cropresize"
             >
               <i></i>
               <span>Tweet</span>
@@ -58,19 +58,19 @@
           <div class="actions-wrapper">
             <a
               id="view-github-btn"
-              href="https://github.com/scaleflex/react-cloudimage-responsive"
+              href="https://github.com/scaleflex/vue-cloudimage-responsive"
               class="btn btn-primary"
               target="_blank"
             >View on GitHub</a>
             <a
-              href="https://codesandbox.io/s/1840nl707j"
+              href="https://codesandbox.io/s/vue-cloudimage-resposnove-example-bqg7g?file=/src/App.vue"
               style="margin-left: 5px"
               class="btn btn-light"
               target="_blank"
             >Edit on CodeSandbox</a>
           </div>
         </div>
-        <a href="https://github.com/scaleflex/react-cloudimage-responsive" target="_blank">
+        <a href="https://github.com/scaleflex/vue-cloudimage-responsive" target="_blank">
           <img
             class="fork-me-on-github"
             src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"
@@ -566,7 +566,7 @@
               <p>
                 …and you're done!{{ ' ' }}
                 <a
-                  href="https://github.com/scaleflex/react-cloudimage-responsive#table-of-contents"
+                  href="https://github.com/scaleflex/vue-cloudimage-responsive#table-of-contents"
                   target="_blank"
                 >{{ ' ' }} Visit the full documentation here.</a>
               </p>
@@ -661,19 +661,19 @@
                 <ul>
                   <li>
                     <a
-                      href="https://github.com/scaleflex/react-cloudimage-responsive"
+                      href="https://github.com/scaleflex/vue-cloudimage-responsive"
                       target="_blank"
                     >View GitHub</a>
                   </li>
                   <li>
                     <a
-                      href="https://github.com/scaleflex/react-cloudimage-responsive/issues"
+                      href="https://github.com/scaleflex/vue-cloudimage-responsive/issues"
                       target="_blank"
                     >Current Issues</a>
                   </li>
                   <li>
                     <a
-                      href="https://github.com/scaleflex/react-cloudimage-responsive#table-of-contents"
+                      href="https://github.com/scaleflex/vue-cloudimage-responsive#table-of-contents"
                       target="_blank"
                     >Documentation</a>
                   </li>
@@ -789,7 +789,7 @@ const cloudimageConfig = {
 
 <template>
 <CloudimageProvider config={cloudimageConfig}>
- <h1>Simple demo of react-cloudimage-responsive</h1>
+ <h1>Simple demo of vue-cloudimage-responsive</h1>
 <Img src="img.jpg" alt="Demo image" ratio=1.5 />
 </CloudimageProvider>
 </template>
