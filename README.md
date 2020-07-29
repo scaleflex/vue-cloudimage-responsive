@@ -29,7 +29,7 @@
 
 <p align="center">
 	<strong>
-		<a href="#table_of_contents">Docs</a>
+		<a href="#table-of-contents">Docs</a>
 		•
 		<a href="https://github.com/scaleflex/vue-cloudimage-responsive" target="_blank">Demo</a>
 		•
