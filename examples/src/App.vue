@@ -63,7 +63,7 @@
               target="_blank"
             >View on GitHub</a>
             <a
-              href="https://codesandbox.io/s/vue-cloudimage-resposnove-example-bqg7g?file=/src/App.vue"
+              href="https://codesandbox.io/s/vue-cloudimage-resposnove-example-bqg7g"
               style="margin-left: 5px"
               class="btn btn-light"
               target="_blank"
@@ -474,7 +474,8 @@
           params="func=crop&ci_info=0"
           :styles="{
             background: 'transparent 50% 50% / cover no-repeat',
-            color: '#fff'
+            color: '#fff',
+            position:'relative'
           }"
         >
           <div style="background: rgba(0,0,0,.6); padding: 40px ">
@@ -525,7 +526,7 @@
             <figure class="highlight">
               <pre>
                   <code class="javascript">
-                    npm install --save vue-cloudimage-responsive
+                    npm install --save vue-cloudimage-responsive-plain vue-lazyload
                   </code>
                 </pre>
             </figure>
@@ -541,7 +542,8 @@
                 of your image storage using{{ ' ' }}
                 <strong>CloudimageProvider</strong>
               </p>
-              <Prism>{{syntaxHighlight6}}</Prism>
+              <Prism language="js">{{syntaxHighlight6}}</Prism>
+              <Prism>{{syntaxHighlight7}}</Prism>
               <p>
                 Get your Cloudimage tokens{{ ' ' }}
                 <a
@@ -552,13 +554,13 @@
 
             <div class="action-wrapper third-action">
               <p>Implement it, just using the Img component:</p>
-
+              <prism>{{ syntaxHighlight8 }}</prism>
               <p>
                 <small>
-                  NOTE: "ratio" is recommended to prevent page layout jumping.{'
-                  '} The parameter is used to calculate image height to hold the
+                  NOTE: "ratio" is recommended to prevent page layout jumping.{{  
+                  ' '}} The parameter is used to calculate image height to hold the
                   image position while image is loading.
-                </small>
+                </small> 
               </p>
             </div>
 
@@ -700,7 +702,7 @@
 
 <script>
 import ContainerBox from "./components/ContainerBox";
-import CloudImageProvider from "../../src/provider";
+import CloudImageProvider from "../../src/CloudImageProvider";
 import Img from "../../src/Img";
 import BackgroundImg from "../../src/background";
 import { images } from "./mock";
@@ -780,6 +782,16 @@ export default {
   style="background: transparent 50% 50% / cover no-repeat">...</BackgroundImg>`,
 
       syntaxHighlight6: `import Vue from 'vue';
+import App from './App.vue';
+import VueLazyload from 'vue-lazyload';
+
+Vue.use(VueLazyload, {
+  lazyComponent: true
+});
+new Vue({
+  render: h => h(App)
+}).$mount('#app');`,
+      syntaxHighlight7: `import Vue from 'vue';
 import Img, { CloudimageProvider } from 'vue-cloudimage-responsive';
 
 const cloudimageConfig = {
@@ -803,6 +815,9 @@ const cloudimageConfig = {
 }
 '
 < /script>
+`,
+      syntaxHighlight8: `
+    <Img src="img.jpg" alt="Demo image"  />
 `,
 
       images,

@@ -38,6 +38,5 @@ module.exports = {
   ],
   resolve: {
     extensions: ['.js', '.vue']
-  },
-  devtool: 'source-map'
+  }
 };

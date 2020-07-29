@@ -1,5 +1,15 @@
 {
-  "presets": [["@babel/preset-env"], "vue"],
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "modules": false,
+        "targets": {
+          "browsers": ["last 2 versions", "ie >= 10"]
+        }
+      }
+    ]
+  ],
   "plugins": [
     "@babel/plugin-syntax-dynamic-import",
     "@babel/plugin-syntax-import-meta",
@@ -15,5 +25,6 @@
     "@babel/plugin-proposal-export-namespace-from",
     "@babel/plugin-proposal-numeric-separator",
     "@babel/plugin-proposal-throw-expressions"
-  ]
+  ],
+  "comments": false
 }

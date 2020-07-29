@@ -2,9 +2,9 @@
   <div>
     <div
       v-if="properties.config.lazyLoading"
-      v-lazy:background-image="this.data.cloudimgURL"
+      v-lazy:background-image="data.cloudimgURL"
       :class="loadedStyle"
-      :style="this.properties.style"
+      :style="properties.style"
     >
       <div v-if="data.preview" :style="previewBgWrapper">
         <div :style="previewBg" />

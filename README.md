@@ -1,4 +1,4 @@
-[![Release](https://img.shields.io/badge/release-v0.3.0-blue.svg)](https://github.com/scaleflex/vue-cloudimage-responsive/releases)
+[![Release](https://img.shields.io/badge/release-v0.1.0-blue.svg)](https://github.com/scaleflex/vue-cloudimage-responsive/releases)
 [![Free plan](https://img.shields.io/badge/price-includes%20free%20plan-green.svg)](https://www.cloudimage.io/en/home#b38181a6-b9c8-4015-9742-7b1a1ad382d5)
 [![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg)](#contributing)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -102,7 +102,7 @@ CDN traffic per month for free.
 using npm
 
 ```
-$ npm install --save vue-cloudimage-responsive
+ npm install --save vue-cloudimage-responsive-plain vue-lazyload
 ```
 
 ## <a name="initialize"></a>Step 2: Initialize
@@ -114,6 +114,11 @@ create vue instance a fle called main.js
 ```js
 import Vue from 'vue';
 import App from './App.vue';
+import VueLazyload from 'vue-lazyload';
+
+Vue.use(VueLazyload, {
+  lazyComponent: true
+});
 new Vue({
   render: h => h(App)
 }).$mount('#app');
