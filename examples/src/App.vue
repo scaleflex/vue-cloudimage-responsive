@@ -524,11 +524,7 @@
           <div class="action-wrapper first-action">
             <p>Install using npm</p>
             <figure class="highlight">
-              <pre>
-                  <code class="javascript">
-                    npm install --save vue-cloudimage-responsive-plain vue-lazyload
-                  </code>
-                </pre>
+              <pre><code class="javascript">npm install --save vue-cloudimage-responsive vue-lazyload</code></pre>
             </figure>
           </div>
 
@@ -816,9 +812,7 @@ const cloudimageConfig = {
 '
 < /script>
 `,
-      syntaxHighlight8: `
-    <Img src="img.jpg" alt="Demo image"  />
-`,
+      syntaxHighlight8: `<Img src="img.jpg" alt="Demo image"/>`,
 
       images,
       imagesSliced,

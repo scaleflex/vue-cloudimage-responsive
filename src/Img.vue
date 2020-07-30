@@ -127,11 +127,12 @@ export default {
     //initial value img style
     this.imgStyle = styles.img({ preview, loaded, operation });
     //initial value picture style
+
     this.picture = styles.picture({
       preserveSize,
       imgNodeWidth,
       imgNodeHeight,
-      ratio: this.properties.ratio || this.loadedImageRatio,
+      ratio: this.data.ratio || this.loadedImageRatio,
       previewLoaded,
       loaded,
       placeholderBackground,
@@ -167,6 +168,11 @@ export default {
         .join(', ');
       this.cloudimgSRCSET = cloudimgSRCSET;
     }
+    // console.log('updating');
+    // console.log(this.properties.src, this.data.ratio);
+    // console.log(this.properties.src, this.properties.ratio);
+    // console.log(this.properties.src, this.loadedImageRatio);
+    // console.log(this);
   },
 
   methods: {
@@ -190,11 +196,12 @@ export default {
 
     onPreviewLoaded(event) {
       if (this.previewLoaded) return;
-
+      // console.log(event.target);
       this.updateLoadedImageSize(event.target);
       this.previewLoaded = true;
     },
     updateLoadedImageSize(image) {
+      // console.log(image.naturalWidth, image.naturalHeight);
       this.loadedImageWidth = image.naturalWidth;
       this.loadedImageHeight = image.naturalHeight;
       this.loadedImageRatio = image.naturalWidth / image.naturalHeight;
@@ -239,7 +246,7 @@ export default {
         preserveSize,
         imgNodeWidth,
         imgNodeHeight,
-        ratio: this.properties.ratio || this.loadedImageRatio,
+        ratio: this.data.ratio || this.loadedImageRatio,
         previewLoaded,
         loaded,
         placeholderBackground,
@@ -278,7 +285,7 @@ export default {
           preserveSize,
           imgNodeWidth,
           imgNodeHeight,
-          ratio: this.properties.ratio || this.loadedImageRatio,
+          ratio: this.data.ratio || this.loadedImageRatio,
           previewLoaded,
           loaded,
           placeholderBackground,

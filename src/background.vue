@@ -1,34 +1,23 @@
 <template>
   <div>
-    <div
-      v-if="properties.config.lazyLoading"
-      v-lazy:background-image="data.cloudimgURL"
-      :class="loadedStyle"
-      :style="properties.style"
-    >
-      <div v-if="data.preview" :style="previewBgWrapper">
-        <div :style="previewBg" />
-      </div>
+    <lazy-component v-if="properties.config.lazyLoading && lazyLoadActive" @show="handler">
+      <div :class="loadedStyle" :style="container">
+        <div v-if="data.preview" :style="previewBgWrapper">
+          <div :style="previewBg" />
+        </div>
 
-      <div
-        v-if="data.preview"
-        class="cloudimage-background-content"
-        style="position: relative "
-      >
-        <slot></slot>
+        <div v-if="data.preview" class="cloudimage-background-content" style="position: relative ">
+          <slot></slot>
+        </div>
+        <slot v-else></slot>
       </div>
-      <slot v-else></slot>
-    </div>
+    </lazy-component>
     <div v-else :class="loadedStyle" :style="container">
       <div v-if="data.preview" :style="previewBgWrapper">
         <div :style="previewBg" />
       </div>
 
-      <div
-        v-if="data.preview"
-        class="cloudimage-background-content"
-        style="position: relative "
-      >
+      <div v-if="data.preview" class="cloudimage-background-content" style="position: relative ">
         <slot></slot>
       </div>
       <slot v-else></slot>
@@ -40,12 +29,12 @@
 </template>
 
 <script>
-import { isServer, processReactNode } from 'cloudimage-responsive-utils';
-import styles from './background.styles';
-import { getFilteredBgProps } from './utils.js';
+import { isServer, processReactNode } from "cloudimage-responsive-utils";
+import styles from "./background.styles";
+import { getFilteredBgProps } from "./utils.js";
 export default {
   // geting the data from the provider
-  inject: ['cloudProvider'],
+  inject: ["cloudProvider"],
   props: {
     src: String,
     params: String,
@@ -54,23 +43,24 @@ export default {
   data() {
     return {
       server: isServer(),
-      cloudimgURL: '',
+      lazyLoadActive: true,
+      cloudimgURL: "",
       processed: false,
       loaded: false,
-      data: '',
+      data: "",
       properties: {
         src: this.src,
-        params: this.params ? this.params : undefined,
+        params: this.params,
         config: this.cloudProvider.config,
         style: this.styles
       },
-      container: '',
-      previewBgWrapper: '',
-      previewBg: '',
-      className: '',
-      lazyLoadConfig: '',
-      otherProps: '',
-      loadedStyle: ''
+      container: "",
+      previewBgWrapper: "",
+      previewBg: "",
+      className: "",
+      lazyLoadConfig: "",
+      otherProps: "",
+      loadedStyle: ""
     };
   },
   mounted() {
@@ -85,7 +75,7 @@ export default {
     this.className = className;
 
     //initial loading style
-    this.loadedStyle = [this.className, 'cloudimage-background', 'loading'];
+    this.loadedStyle = [this.className, "cloudimage-background", "loading"];
     //initial value container style
     this.container = styles.container({ style, cloudimgURL });
     //initial value preview wrapper style
@@ -95,6 +85,9 @@ export default {
     this.processBg();
   },
   methods: {
+    handler(component) {
+      this.lazyLoadActive = false;
+    },
     processBg(update, windowScreenBecomesBigger) {
       const bgNode = this.$el;
       const data = processReactNode(
@@ -114,6 +107,7 @@ export default {
       const img = new Image();
 
       img.onload = this.onImgLoad;
+
       img.src = cloudimgURL;
     },
 
@@ -121,8 +115,9 @@ export default {
       this.loaded = true;
     }
   },
+
   watch: {
-    'properties.config.innerWidth': function(newVal, oldVal) {
+    "properties.config.innerWidth": function(newVal, oldVal) {
       const style = this.properties.style;
       const cloudimgURL = this.data.cloudimgURL;
       const previewCloudimgURL = this.data.previewCloudimgURL;
@@ -145,7 +140,7 @@ export default {
       //updating value of preview style if width changed
       this.previewBg = styles.previewBg({ previewCloudimgURL });
     },
-    'properties.src': function(newVal, oldVal) {
+    "properties.src": function(newVal, oldVal) {
       const { src } = this.properties;
       if (src !== oldVal.src) {
         this.processBg();
@@ -159,8 +154,8 @@ export default {
 
       if (loaded) {
         //if loaded change style to loaded
-        this.loadedStyle = [this.className, 'cloudimage-background', 'loaded']
-          .join(' ')
+        this.loadedStyle = [this.className, "cloudimage-background", "loaded"]
+          .join(" ")
           .trim();
         //updating value of container style if page loaded
         this.container = styles.container({ style, cloudimgURL });
@@ -170,21 +165,23 @@ export default {
         this.previewBg = styles.previewBg({ previewCloudimgURL });
       } else {
         //if still loading change to loading
-        this.loadedStyle = [this.className, 'cloudimage-background', 'loading'];
+        this.loadedStyle = [this.className, "cloudimage-background", "loading"];
       }
     },
 
-    'data.cloudimgURL': function(newVal) {
-      const {
-        config: { delay }
-      } = this.cloudProvider;
+    lazyLoadActive: function() {
+      if (!this.lazyLoadActive) {
+        const {
+          config: { delay }
+        } = this.cloudProvider;
 
-      if (typeof delay !== 'undefined') {
-        setTimeout(() => {
-          this.preLoadImg(newVal);
-        }, delay);
-      } else {
-        this.preLoadImg(newVal);
+        if (typeof delay !== "undefined") {
+          setTimeout(() => {
+            this.preLoadImg(this.data.cloudimgURL);
+          }, delay);
+        } else {
+          this.preLoadImg(this.data.cloudimgURL);
+        }
       }
     }
   }
