@@ -14,7 +14,7 @@
     </lazy-component>
     <div v-else :class="loadedStyle" :style="container">
       <div v-if="data.preview" :style="previewBgWrapper">
-        <div :style="previewBg" />
+        <div :style="previewBg " />
       </div>
 
       <div v-if="data.preview" class="cloudimage-background-content" style="position: relative ">
@@ -76,17 +76,20 @@ export default {
 
     //initial loading style
     this.loadedStyle = [this.className, "cloudimage-background", "loading"];
-    //initial value container style
-    this.container = styles.container({ style, cloudimgURL });
+
     //initial value preview wrapper style
     this.previewBgWrapper = styles.previewBgWrapper({ loaded });
-    //initial value preview style
-    this.previewBg = styles.previewBg({ previewCloudimgURL });
+
     this.processBg();
   },
   methods: {
     handler(component) {
+      console.log(this);
       this.lazyLoadActive = false;
+      //initial value container style
+      this.container = styles.container({ style, cloudimgURL });
+      //initial value preview style
+      this.previewBg = styles.previewBg({ previewCloudimgURL });
     },
     processBg(update, windowScreenBecomesBigger) {
       const bgNode = this.$el;
@@ -97,11 +100,9 @@ export default {
         windowScreenBecomesBigger
       );
 
-      if (!data) {
-        return;
+      if (data) {
+        this.data = data;
       }
-
-      this.data = data;
     },
     preLoadImg(cloudimgURL) {
       const img = new Image();
@@ -114,6 +115,10 @@ export default {
     onImgLoad() {
       this.loaded = true;
     }
+  },
+  updated() {
+    console.log(this.previewBg);
+    console.log(this.container);
   },
 
   watch: {
@@ -180,9 +185,7 @@ export default {
             this.preLoadImg(this.data.cloudimgURL);
           }, delay);
         } else {
-          setTimeout(() => {
-            this.preLoadImg(this.data.cloudimgURL);
-          }, 2);
+          this.preLoadImg(this.data.cloudimgURL);
         }
       }
     }

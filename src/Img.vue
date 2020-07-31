@@ -85,7 +85,6 @@ export default {
   mounted() {
     if (this.server) return;
 
-    console.log("cloudimg", this.data.cloudimgURL);
     const operation = this.data.operation;
     const preview = this.data.preview;
     const loaded = this.loaded;
@@ -154,7 +153,6 @@ export default {
         .join(", ");
       this.cloudimgSRCSET = cloudimgSRCSET;
     }
-    console.log("updating");
 
     // console.log(this.properties.src, this.data.ratio);
     // console.log(this.properties.src, this.properties.ratio);
@@ -263,7 +261,7 @@ export default {
         this.loadedStyle = [this.className, "cloudimage-background", "loaded"]
           .join(" ")
           .trim();
-        console.log("cloudimg", this.data.cloudimgURL);
+
         // updating preview wrapper style if page loaded
         this.previewWrapper = styles.previewWrapper();
         // updating preview img if page loaded
