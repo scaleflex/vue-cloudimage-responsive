@@ -180,7 +180,9 @@ export default {
             this.preLoadImg(this.data.cloudimgURL);
           }, delay);
         } else {
-          this.preLoadImg(this.data.cloudimgURL);
+          setTimeout(() => {
+            this.preLoadImg(this.data.cloudimgURL);
+          }, 2);
         }
       }
     }
