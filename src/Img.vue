@@ -117,7 +117,7 @@ export default {
       preserveSize,
       imgNodeWidth,
       imgNodeHeight,
-      ratio: this.data.ratio || this.loadedImageRatio,
+      ratio: this.data.ratio || this.loadedImageRatio || this.properties.ratio,
       previewLoaded,
       loaded,
       placeholderBackground,
@@ -269,6 +269,7 @@ export default {
         // updating img style if page loaded
         this.imgStyle = styles.img({ preview, loaded, operation });
         // updating picture style if page loaded
+
         this.picture = styles.picture({
           preserveSize,
           imgNodeWidth,

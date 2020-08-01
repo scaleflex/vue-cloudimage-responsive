@@ -19,7 +19,7 @@ const picture = ({
   transform: 'translateZ(0)',
   ...(ratio &&
     operation !== 'bound' && {
-      paddingBottom: preserveSize ? 'none' : 100 / ratio + '%',
+      paddingBottom: 100 / ratio + '%',
       overflow: 'hidden'
     })
 });
