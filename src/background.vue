@@ -84,7 +84,11 @@ export default {
   },
   methods: {
     handler(component) {
-      console.log(this);
+    const style = this.properties.style;
+    const cloudimgURL = this.data.cloudimgURL;
+    const previewCloudimgURL = this.data.previewCloudimgURL;
+    const loaded = this.loaded;
+
       this.lazyLoadActive = false;
       //initial value container style
       this.container = styles.container({ style, cloudimgURL });
@@ -115,10 +119,6 @@ export default {
     onImgLoad() {
       this.loaded = true;
     }
-  },
-  updated() {
-    console.log(this.previewBg);
-    console.log(this.container);
   },
 
   watch: {
