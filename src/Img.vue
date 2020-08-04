@@ -183,7 +183,6 @@ export default {
 
     onPreviewLoaded(event) {
       if (this.previewLoaded) return;
-      debugger;
       this.updateLoadedImageSize(event.target);
       this.previewLoaded = true;
     },
@@ -252,7 +251,6 @@ export default {
       const { preserveSize, imgNodeWidth, imgNodeHeight } = getFilteredProps(
         this.properties
       );
-      console.log(this.loadedImageRatio);
       const previewLoaded = this.previewLoaded;
       const placeholderBackground = this.cloudProvider.config
         .placeholderBackground;
