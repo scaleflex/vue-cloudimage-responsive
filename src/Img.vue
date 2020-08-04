@@ -54,6 +54,7 @@ export default {
       lazyLoadActive: true,
       cloudimgURL: "",
       processed: false,
+      previewLoaded: false,
       loaded: false,
       loadedImageWidth: "",
       loadedImageHeight: "",
@@ -78,8 +79,7 @@ export default {
       picture: "",
       previewWrapper: "",
       previewImg: "",
-      loadedStyle: "",
-      height: { height: 0 }
+      loadedStyle: ""
     };
   },
   mounted() {
@@ -183,7 +183,7 @@ export default {
 
     onPreviewLoaded(event) {
       if (this.previewLoaded) return;
-      // console.log(event.target);
+      debugger;
       this.updateLoadedImageSize(event.target);
       this.previewLoaded = true;
     },
@@ -245,6 +245,27 @@ export default {
       if (src !== oldVal.src) {
         this.processImg();
       }
+    },
+    previewLoaded: function(oldVal, newVal) {
+      const operation = this.data.operation;
+      const loaded = this.loaded;
+      const { preserveSize, imgNodeWidth, imgNodeHeight } = getFilteredProps(
+        this.properties
+      );
+      console.log(this.loadedImageRatio);
+      const previewLoaded = this.previewLoaded;
+      const placeholderBackground = this.cloudProvider.config
+        .placeholderBackground;
+      this.picture = styles.picture({
+        preserveSize,
+        imgNodeWidth,
+        imgNodeHeight,
+        ratio: this.data.ratio || this.loadedImageRatio,
+        newVal,
+        loaded,
+        placeholderBackground,
+        operation
+      });
     },
     loaded: function(newVal) {
       const operation = this.data.operation;
