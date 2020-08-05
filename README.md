@@ -31,7 +31,7 @@
 	<strong>
 		<a href="#table-of-contents">Docs</a>
 		•
-		<a href="https://github.com/scaleflex/vue-cloudimage-responsive" target="_blank">Demo</a>
+		<a href="https://scaleflex.github.io/vue-cloudimage-responsive/" target="_blank">Demo</a>
 		•
 		<a href="https://codesandbox.io/s/vue-cloudimage-resposnove-example-bqg7g?file=/src/App.vue" target="_blank">Code Sandbox</a>
 		•
