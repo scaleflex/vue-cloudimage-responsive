@@ -63,7 +63,7 @@
               target="_blank"
             >View on GitHub</a>
             <a
-              href="https://codesandbox.io/s/vue-cloudimage-resposnove-example-bqg7g"
+              href="https://codesandbox.io/s/vue-cloudimage-responsive-example-bqg7g"
               style="margin-left: 5px"
               class="btn btn-light"
               target="_blank"

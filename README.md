@@ -33,7 +33,7 @@
 		•
 		<a href="https://scaleflex.github.io/vue-cloudimage-responsive/" target="_blank">Demo</a>
 		•
-		<a href="https://codesandbox.io/s/vue-cloudimage-resposnove-example-bqg7g?file=/src/App.vue" target="_blank">Code Sandbox</a>
+		<a href="https://codesandbox.io/s/vue-cloudimage-responsive-example-bqg7g" target="_blank">Code Sandbox</a>
 		•
 		<a href="https://medium.com/@dmitry_82269/responsive-images-in-2019-now-easier-than-ever-b76e5a43c074" target="_blank">Why?</a>
 	</strong>
@@ -161,7 +161,7 @@ export default{
 NOTE: "ratio" is recommended to prevent page layout jumping. The parameter is used to calculate image height to hold
 the image position while image is loading.
 
-<a href="https://codesandbox.io/s/vue-cloudimage-resposnove-example-bqg7g"><img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="edeit in codesandbox"/></a>
+<a href="https://codesandbox.io/s/vue-cloudimage-responsive-example-bqg7g"><img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="edeit in codesandbox"/></a>
 
 ### BackgroundImg component:
 
