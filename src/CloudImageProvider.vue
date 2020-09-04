@@ -33,7 +33,7 @@ export default {
         params: processParams(this.cloudImageConfig.params),
         innerWidth: typeof window !== "undefined" ? window.innerWidth : null,
         previewQualityFactor: 10,
-        doNotReplaceURL: false,
+        doNotReplaceURL: this.cloudImageConfig.doNotReplaceURL || false,
         devicePixelRatioList: CONSTANTS.DEVICE_PIXEL_RATIO_LIST,
         limitFactor: this.cloudImageConfig.limitFactor,
         minLowQualityWidth: this.cloudImageConfig.lowQualityPreview.minImgWidth,
@@ -54,6 +54,14 @@ export default {
         })
       );
     }
+  },
+  
+  beforeDestroy() {
+   window.removeEventListener(
+     'resize', 
+    debounce(100, () => {
+          this.config.innerWidth = window.innerWidth;
+    }));
   },
   // to able to use the data in image and background
   provide() {
