@@ -134,10 +134,12 @@ const cloudimageConfig = {
 };
 
 <template>
-<CloudimageProvider config={cloudimageConfig}>
+ <div id="app">
+<CloudImageProvider v-bind:cloudImageConfig="cloudimageConfig">
  <h1>Simple demo of vue-cloudimage-responsive</h1>
-<Img src="img.jpg" alt="Demo image" ratio=1.5 />
-</CloudimageProvider>
+<Img src="img.jpg" alt="Demo image"/>
+</CloudImageProvider>
+</div>
 </template>
 
 <script>
@@ -155,11 +157,13 @@ export default{
 ### Img component:
 
 ```html
-<img src="img.jpg" alt="Demo image" ratio="1.5" />
+<Img src="img.jpg" alt="Demo image" ratio="1.5" />
 ```
 
-NOTE: "ratio" is recommended to prevent page layout jumping. The parameter is used to calculate image height to hold
-the image position while image is loading.
+NOTE: 
+- "ratio" is recommended to prevent page layout jumping. The parameter is used to calculate image height to hold
+the image position while image is loading. 
+- NOTE: you can also reference it with kabab-case : <img/>
 
 <a href="https://codesandbox.io/s/vue-cloudimage-responsive-example-bqg7g"><img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="edeit in codesandbox"/></a>
 
@@ -170,6 +174,7 @@ the image position while image is loading.
   {'Your conent...'}
 </BackgroundImg>
 ```
+NOTE: you can also reference it with kabab-case : <background-img></background-img>
 
 <a href="https://codesandbox.io/s/vue-cloudimage-responsive-background-kejur"><img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="edeit in codesandbox"/></a>
 

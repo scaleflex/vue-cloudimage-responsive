@@ -71,7 +71,7 @@
           </div>
         </div>
         <a href="https://github.com/scaleflex/vue-cloudimage-responsive" target="_blank">
-          <img
+          <Img
             class="fork-me-on-github"
             src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"
             alt="Fork me on GitHub"
@@ -79,7 +79,7 @@
         </a>
 
         <a href="https://www.filerobot.com/" class="robot-icon">
-          <img
+          <Img
             style=" width: 100%"
             id="robot-icon"
             src="https://demo.cloudimg.io/width/800/q35.foil1/https://cdn.scaleflex.it/filerobot/assets/robot-icon-left.png"
@@ -401,7 +401,7 @@
                       position: relative
                     "
                 >
-                  <img src="https://doc.cloudimg.io/v7/sample.li/boat.jpg" />
+                  <Img src="https://doc.cloudimg.io/v7/sample.li/boat.jpg" />
                   <div class="border-box" />
                 </div>
               </div>
@@ -756,7 +756,7 @@ export default {
   }"
 />`,
       syntaxHighlight2: `<div style=" width: 200px, height: 200px ">
-  <img 
+  <Img 
     src="https://doc.cloudimg.io/v7/sample.li/boat.jpg"
   />
 </div>`,
@@ -796,9 +796,9 @@ const cloudimageConfig = {
 };
 
 <template>
-<CloudimageProvider config={cloudimageConfig}>
+<CloudimageProvider v-bind:cloudImageConfig="cloudimageConfig">
  <h1>Simple demo of vue-cloudimage-responsive</h1>
-<Img src="img.jpg" alt="Demo image" ratio=1.5 />
+<Img src="img.jpg" alt="Demo image" v-bind:ratio="1.5" />
 </CloudimageProvider>
 </template>
 
