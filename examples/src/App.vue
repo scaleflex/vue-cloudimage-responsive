@@ -71,7 +71,7 @@
           </div>
         </div>
         <a href="https://github.com/scaleflex/vue-cloudimage-responsive" target="_blank">
-          <Img
+          <img
             class="fork-me-on-github"
             src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"
             alt="Fork me on GitHub"
@@ -79,7 +79,7 @@
         </a>
 
         <a href="https://www.filerobot.com/" class="robot-icon">
-          <Img
+          <img
             style=" width: 100%"
             id="robot-icon"
             src="https://demo.cloudimg.io/width/800/q35.foil1/https://cdn.scaleflex.it/filerobot/assets/robot-icon-left.png"
@@ -89,7 +89,7 @@
       </section>
       <section class="container-box-wrapper" style="margin: 0">
         <ContainerBox v-bind:config="cloudImageConfig" />
-        <Img v-bind:src="images[0].src" v-bind:ratio="images[0].ratio" />
+        <Img v-bind:src="images[0].src" v-bind:ratio="images[0].ratio"/>
       </section>
       <div style=" background: #fff">
         <section class="container ready-to-start">
@@ -745,8 +745,8 @@ export default {
   data() {
     return {
       syntaxHighlight1: `<Img
-  src="images[17].src"
-  sizes="{
+  :src="images[17].src"
+  :sizes="{
     '(max-width: 575px)': { w: 400, h: 150 },
     '(min-width: 576px)': { r: 1 },
     '(min-width: 620px)': { h: 560 },
@@ -775,7 +775,7 @@ export default {
       syntaxHighlight5: `<BackgroundImg
   src="ameen-fahmy.jpg" 
   params="func=crop" 
-  style="background: transparent 50% 50% / cover no-repeat">...</BackgroundImg>`,
+  :styles="{background: transparent 50% 50% / cover no-repeat}">...</BackgroundImg>`,
 
       syntaxHighlight6: `import Vue from 'vue';
 import App from './App.vue';
