@@ -157,7 +157,7 @@ export default{
 ### Img component:
 
 ```html
-<img src="img.jpg" alt="Demo image" v-bind:ratio="1.5" />
+<Img src="img.jpg" alt="Demo image" v-bind:ratio="1.5" />
 ```
 
 NOTE:
