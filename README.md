@@ -163,7 +163,7 @@ export default{
 NOTE: 
 - "ratio" is recommended to prevent page layout jumping. The parameter is used to calculate image height to hold
 the image position while image is loading. 
-- NOTE: you can also reference it with kabab-case : <img/>
+- you can also reference it with kabab-case : img
 
 <a href="https://codesandbox.io/s/vue-cloudimage-responsive-example-bqg7g"><img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="edeit in codesandbox"/></a>
 
@@ -174,7 +174,7 @@ the image position while image is loading.
   {'Your conent...'}
 </BackgroundImg>
 ```
-NOTE: you can also reference it with kabab-case : <background-img></background-img>
+NOTE: you can also reference it with kabab-case : background-img
 
 <a href="https://codesandbox.io/s/vue-cloudimage-responsive-background-kejur"><img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="edeit in codesandbox"/></a>
 
