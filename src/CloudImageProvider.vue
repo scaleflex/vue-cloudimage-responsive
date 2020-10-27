@@ -31,7 +31,7 @@ export default {
               lg: '(min-width: 992px)', // 992 - 1199   SMALL_LAPTOP_SCREEN
               xl: '(min-width: 1200px)' // from 1200    USUALSCREEN
             },
-        params: processParams(this.cloudImageConfig.params),
+        params:this.cloudImageConfig.params? processParams(this.cloudImageConfig.params) :'org_if_sml=1', 
         innerWidth: typeof window !== 'undefined' ? window.innerWidth : null,
         previewQualityFactor: 10,
         doNotReplaceURL: this.cloudImageConfig.doNotReplaceURL || false,
