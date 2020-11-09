@@ -344,7 +344,7 @@
               <Img
                 :src="images[17].src"
                 :sizes="{
-                  '(max-width: 575px)': { w: 400, h: 150 },
+                  '(max-width: 575px)': { src: 'https://img.scaleflex.com/truck.jpg', w: 400, h: 150 },
                   '(min-width: 576px)': { r: 1 },
                   '(min-width: 620px)': { h: 560 },
                   '(min-width: 768px)': { w: '50vw' },
