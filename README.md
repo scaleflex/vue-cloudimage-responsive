@@ -1,4 +1,4 @@
-[![Release](https://img.shields.io/badge/release-v1.0.2-blue.svg)](https://github.com/scaleflex/vue-cloudimage-responsive/releases)
+[![Release](https://img.shields.io/badge/release-v1.0.3-blue.svg)](https://github.com/scaleflex/vue-cloudimage-responsive/releases)
 [![Free plan](https://img.shields.io/badge/price-includes%20free%20plan-green.svg)](https://www.cloudimage.io/en/home#b38181a6-b9c8-4015-9742-7b1a1ad382d5)
 [![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg)](#contributing)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -378,19 +378,24 @@ params={{
 ###### Type: **Object** | Default: **undefined**
 
 **{preset breakpoint (xs,sm, md,lg,xl) or media query + ' ' + image params}**:
+imageProps: **{ w, h, r, src }** where 
+
+* **w** - width, 
+* **h** - height, 
+* **r** - ratio, 
+* **src** - original image hosted on your web server. You can use absolute path or relative to the baseURL in your config.
 
 ```jsx
 <Img
   src="dino-reichmuth-1.jpg"
-  v-bind:sizes="{
-    '(max-width: 575px)': { w: 400, h: 150 },
-    '(min-width): 576px)': { r: 1 },
-    '(min-width: 620px)': { h: 560 },
-    '(min-width: 768px)': { w: '50vw' },
-    '(min-width: 992px)': { w: '55vw', h: 300 },
-    '(min-width: 1200px)': { w: 1200 }
-  }"
-/>
+  sizes="{
+     '(max-width: 575px)': { w: 400, h: 150 },
+     '(min-width): 576px)': { src: 'dino-reichmuth-square.jpg', r: 1 },
+     '(min-width: 620px)': { h: 560 },
+     '(min-width: 768px)': { w: '50vw' },
+     lg: { w: '55vw', h: 300 },
+     xl: { w: 1200 }
+ }"/>
 ```
 
 You can drop some breakpoints, for example:
