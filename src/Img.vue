@@ -20,7 +20,7 @@
         :alt="alt"
         :style="imgStyle"
         v-bind:ratio="otherProps.ratio"
-        @load="onImgLoad"
+        @load="_onImgLoad"
       />
     </div>
   </lazy-component>
@@ -42,65 +42,69 @@
       :style="imgStyle"
       v-bind:ratio="otherProps.ratio"
       v-bind:src="data.cloudimgURL"
-      @load="onImgLoad"
+      @load="_onImgLoad"
       :srcset="cloudimgSRCSET"
     />
   </div>
 </template>
 
 <script>
-import { isServer, processReactNode } from 'cloudimage-responsive-utils'
-import { BASE_64_PLACEHOLDER } from 'cloudimage-responsive-utils/dist/constants'
-import { getFilteredProps } from './utils'
-import { imgStyles as styles } from 'cloudimage-responsive-utils'
+import { isServer, processReactNode } from "cloudimage-responsive-utils";
+import { BASE_64_PLACEHOLDER } from "cloudimage-responsive-utils/dist/constants";
+import { getFilteredProps } from "./utils";
+import { imgStyles as styles } from "cloudimage-responsive-utils";
 
 export default {
   // geting the data from the provider
-  inject: ['cloudProvider'],
+  inject: ["cloudProvider"],
   props: {
     src: {
       type: String,
       default: undefined,
-      required: true
+      required: true,
     },
     width: {
       type: String,
-      default: undefined
+      default: undefined,
     },
     height: {
       type: String,
-      default: undefined
+      default: undefined,
     },
     params: {
       type: String,
-      default: undefined
+      default: undefined,
     },
     sizes: {
       type: Object,
-      default: undefined
+      default: undefined,
     },
     ratio: {
-      type: Number
+      type: Number,
     },
     alt: {
-      type: String
+      type: String,
     },
     className: {
-      type: String
-    }
+      type: String,
+    },
+    onImgLoad: {
+      type: Function,
+      default: undefined,
+    },
   },
   data() {
     return {
       server: isServer(),
       BASE_64_PLACEHOLDER,
       lazyLoadActive: true,
-      cloudimgURL: '',
+      cloudimgURL: "",
       processed: false,
       loaded: false,
-      loadedImageWidth: '',
-      loadedImageHeight: '',
-      loadedImageRatio: '',
-      data: '',
+      loadedImageWidth: "",
+      loadedImageHeight: "",
+      loadedImageRatio: "",
+      data: "",
       properties: {
         src: this.src,
         width: this.width,
@@ -110,46 +114,47 @@ export default {
         ratio: this.ratio,
         alt: this.alt,
         className: this.className,
-        config: this.cloudProvider.config
+        config: this.cloudProvider.config,
+        onImgLoad: this.onImgLoad,
       },
-      preserveSize: '',
-      imgNodeWidth: '',
-      imgNodeHeight: '',
-      otherProps: '',
-      cloudimgSRCSET: '',
-      imgStyle: '',
-      picture: '',
-      previewWrapper: '',
-      previewImg: '',
-      loadedStyle: ''
-    }
+      preserveSize: "",
+      imgNodeWidth: "",
+      imgNodeHeight: "",
+      otherProps: "",
+      cloudimgSRCSET: "",
+      imgStyle: "",
+      picture: "",
+      previewWrapper: "",
+      previewImg: "",
+      loadedStyle: "",
+    };
   },
   mounted() {
-    if (this.server) return
+    if (this.server) return;
 
-    const operation = this.data.operation
-    const preview = this.data.preview
-    const loaded = this.loaded
-    const previewLoaded = this.previewLoaded
+    const operation = this.data.operation;
+    const preview = this.data.preview;
+    const loaded = this.loaded;
+    const previewLoaded = this.previewLoaded;
     const placeholderBackground = this.cloudProvider.config
-      .placeholderBackground
+      .placeholderBackground;
     const {
       preserveSize,
       imgNodeWidth,
       imgNodeHeight,
       ...otherProps
-    } = getFilteredProps(this.properties)
+    } = getFilteredProps(this.properties);
 
     //initial loading style
-    this.loadedStyle = [this.className, 'cloudimage-background', 'loading']
-      .join(' ')
-      .trim()
+    this.loadedStyle = [this.className, "cloudimage-background", "loading"]
+      .join(" ")
+      .trim();
     //initial value preview wrapper stylr
-    this.previewWrapper = styles.previewWrapper()
+    this.previewWrapper = styles.previewWrapper();
     //initial value preview img style
-    this.previewImg = styles.previewImg({ loaded, operation })
+    this.previewImg = styles.previewImg({ loaded, operation });
     //initial value img style
-    this.imgStyle = styles.img({ preview, loaded, operation })
+    this.imgStyle = styles.img({ preview, loaded, operation });
     //initial value picture style
 
     this.picture = styles.picture({
@@ -160,34 +165,34 @@ export default {
       previewLoaded,
       loaded,
       placeholderBackground,
-      operation
-    })
+      operation,
+    });
 
     const {
-      config: { delay }
-    } = this.cloudProvider
+      config: { delay },
+    } = this.cloudProvider;
 
-    if (typeof delay !== 'undefined') {
+    if (typeof delay !== "undefined") {
       setTimeout(() => {
-        this.processImg()
-      }, delay)
+        this.processImg();
+      }, delay);
     } else {
-      this.processImg()
+      this.processImg();
     }
 
     //the value from filter and passing to data
-    this.preserveSize = preserveSize
-    this.imgNodeWidth = imgNodeWidth
-    this.imgNodeHeight = imgNodeHeight
-    this.otherProps = { ...otherProps }
+    this.preserveSize = preserveSize;
+    this.imgNodeWidth = imgNodeWidth;
+    this.imgNodeHeight = imgNodeHeight;
+    this.otherProps = { ...otherProps };
   },
   updated() {
     //srcset value after processing image
     if (this.data.cloudimgSRCSET) {
       const cloudimgSRCSET = this.data.cloudimgSRCSET
         .map(({ dpr, url }) => `${url} ${dpr}x`)
-        .join(', ')
-      this.cloudimgSRCSET = cloudimgSRCSET
+        .join(", ");
+      this.cloudimgSRCSET = cloudimgSRCSET;
     }
 
     // console.log(this.properties.src, this.data.ratio);
@@ -199,71 +204,76 @@ export default {
   methods: {
     handler(component) {
       setTimeout(() => {
-        this.lazyLoadActive = false
-      }, 100)
+        this.lazyLoadActive = false;
+      }, 100);
     },
     processImg(update, windowScreenBecomesBigger) {
-      const imgNode = this.$el
+      const imgNode = this.$el;
 
       const data = processReactNode(
         this.properties,
         imgNode,
         update,
         windowScreenBecomesBigger
-      )
+      );
       if (data) {
         //if size is defined so data is defined if not error well appear
-        this.data = data
+        this.data = data;
       }
     },
 
     onPreviewLoaded(event) {
-      if (this.previewLoaded) return
+      if (this.previewLoaded) return;
       // console.log(event.target);
-      this.updateLoadedImageSize(event.target)
-      this.previewLoaded = true
+      this.updateLoadedImageSize(event.target);
+      this.previewLoaded = true;
     },
     updateLoadedImageSize(image) {
       // console.log(image.naturalWidth, image.naturalHeight);
-      this.loadedImageWidth = image.naturalWidth
-      this.loadedImageHeight = image.naturalHeight
-      this.loadedImageRatio = image.naturalWidth / image.naturalHeight
+      this.loadedImageWidth = image.naturalWidth;
+      this.loadedImageHeight = image.naturalHeight;
+      this.loadedImageRatio = image.naturalWidth / image.naturalHeight;
     },
 
-    onImgLoad(event) {
-      this.updateLoadedImageSize(event.target)
-      this.loaded = true
-    }
+    _onImgLoad(event) {
+      this.updateLoadedImageSize(event.target);
+      this.loaded = true;
+
+      const { onImgLoad } = this.properties;
+      if (typeof onImgLoad === "function") {
+        onImgLoad(event);
+      }
+    },
   },
 
   watch: {
-    'properties.config.innerWidth': function(newVal, oldVal) {
-      if (this.server) return
-      const operation = this.data.operation
-      const preview = this.data.preview
-      const loaded = this.loaded
+    "properties.config.innerWidth": function (newVal, oldVal) {
+      if (this.server) return;
+      const operation = this.data.operation;
+      const preview = this.data.preview;
+      const loaded = this.loaded;
       const { preserveSize, imgNodeWidth, imgNodeHeight } = getFilteredProps(
         this.properties
-      )
-      const previewLoaded = this.previewLoaded
+      );
+      const previewLoaded = this.previewLoaded;
       const placeholderBackground = this.cloudProvider.config
-        .placeholderBackground
+        .placeholderBackground;
 
       const {
-        config: { innerWidth }
-      } = this.properties
+        config: { innerWidth },
+      } = this.properties;
 
       if (oldVal !== innerWidth) {
         //if width changed update the data from proccesing image
-        this.processImg(true, innerWidth > oldVal)
+        this.processImg(true, innerWidth > oldVal);
       }
 
       // updating preview wrapper style if width changed
-      this.previewWrapper = styles.previewWrapper()
+      this.previewWrapper = styles.previewWrapper();
       // updating preview img if width change
-      this.previewImg = styles.previewImg({ loaded, operation })
+      this.previewImg = styles.previewImg({ loaded, operation });
       // updating img style if width changed
-      this.imgStyle = styles.img({ preview, loaded, operation })
+      this.imgStyle = styles.img({ preview, loaded, operation });
       // updating picture style if width change
       this.picture = styles.picture({
         preserveSize,
@@ -273,37 +283,37 @@ export default {
         previewLoaded,
         loaded,
         placeholderBackground,
-        operation
-      })
+        operation,
+      });
     },
-    'properties.src': function(newVal, oldVal) {
-      const { src } = this.properties
+    "properties.src": function (newVal, oldVal) {
+      const { src } = this.properties;
       if (src !== oldVal.src) {
-        this.processImg()
+        this.processImg();
       }
     },
-    loaded: function(newVal) {
-      const operation = this.data.operation
-      const preview = this.data.preview
-      const loaded = newVal
+    loaded: function (newVal) {
+      const operation = this.data.operation;
+      const preview = this.data.preview;
+      const loaded = newVal;
       const { preserveSize, imgNodeWidth, imgNodeHeight } = getFilteredProps(
         this.properties
-      )
-      const previewLoaded = this.previewLoaded
+      );
+      const previewLoaded = this.previewLoaded;
       const placeholderBackground = this.cloudProvider.config
-        .placeholderBackground
+        .placeholderBackground;
 
       if (loaded) {
-        this.loadedStyle = [this.className, 'cloudimage-background', 'loaded']
-          .join(' ')
-          .trim()
+        this.loadedStyle = [this.className, "cloudimage-background", "loaded"]
+          .join(" ")
+          .trim();
 
         // updating preview wrapper style if page loaded
-        this.previewWrapper = styles.previewWrapper()
+        this.previewWrapper = styles.previewWrapper();
         // updating preview img if page loaded
-        this.previewImg = styles.previewImg({ loaded, operation })
+        this.previewImg = styles.previewImg({ loaded, operation });
         // updating img style if page loaded
-        this.imgStyle = styles.img({ preview, loaded, operation })
+        this.imgStyle = styles.img({ preview, loaded, operation });
         // updating picture style if page loaded
 
         this.picture = styles.picture({
@@ -314,15 +324,15 @@ export default {
           previewLoaded,
           loaded,
           placeholderBackground,
-          operation
-        })
+          operation,
+        });
       } else {
         //if still loading change to loading
-        this.loadedStyle = [this.className, 'cloudimage-background', 'loading']
-          .join(' ')
-          .trim()
+        this.loadedStyle = [this.className, "cloudimage-background", "loading"]
+          .join(" ")
+          .trim();
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
