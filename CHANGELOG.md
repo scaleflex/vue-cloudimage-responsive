@@ -25,6 +25,9 @@ Types of changes:
 - ...
 
 -------------
+## 1.0.5- 2020-04-15
+### Fix
+- Fix commonjs import in package.json
 ## 1.0.4- 2020-02-12
 ### Added
 - OnImgLoad to capture event on load
