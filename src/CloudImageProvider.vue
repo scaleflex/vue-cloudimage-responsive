@@ -14,7 +14,8 @@ export default {
     return {
       config: {
         token: this.cloudImageConfig.token || '',
-        domain: 'cloudimg.io',
+        domain: this.cloudImageConfig.customDomain || 'cloudimg.io',
+        customDomain: (this.cloudImageConfig.customDomain) || false,
         lazyLoading: this.cloudImageConfig.lazyLoading || true,
         lazyLoadOffset: this.cloudImageConfig.lazyLoadOffset || 100,
         placeholderBackground:
