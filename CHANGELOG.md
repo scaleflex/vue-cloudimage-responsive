@@ -25,13 +25,21 @@ Types of changes:
 - ...
 
 -------------
+
+## 1.1.0 2021-06-16
+### Added
+- set a custom domain property. This is useful for where a business wants to use a custom cname instead of the default 
+  cloudimage.io URL.
+
 ## 1.0.5- 2020-04-15
 ### Fix
 - Fix commonjs import in package.json
+
 ## 1.0.4- 2020-02-12
 ### Added
 - OnImgLoad to capture event on load
 - documentation to readme.md under image properties
+
 ## 1.0.3 - 2020-11-09
 ### updated
 - utils version to add src to each size
