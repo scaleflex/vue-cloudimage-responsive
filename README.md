@@ -1,4 +1,4 @@
-[![Release](https://img.shields.io/badge/release-v1.0.5-blue.svg)](https://github.com/scaleflex/vue-cloudimage-responsive/releases)
+[![Release](https://img.shields.io/badge/release-v1.2.0-blue.svg)](https://github.com/scaleflex/vue-cloudimage-responsive/releases)
 [![Free plan](https://img.shields.io/badge/price-includes%20free%20plan-green.svg)](https://www.cloudimage.io/en/home#b38181a6-b9c8-4015-9742-7b1a1ad382d5)
 [![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg)](#contributing)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -322,6 +322,22 @@ Delay for processing an image after rendering component.
 
 **NOTE:** normally the parameter is not needed, but in some cases with integrating third part libraries it can fix wrong
 calculation of image container.
+
+### ImageSizeAttributes
+
+###### Type: **String** | possible values: 'use', 'ignore', 'take-ratio' | Default: **'use'** 
+
+If width and height attributes are set:
+
+**use** - width & height attributes values will be used to calculate image size (according to user's DPR) and **ratio**. 
+
+**take-ratio** - width & height attributes values will be used only to calculate **ratio**.
+
+**ignore** - width & height attributes will be ignored.
+
+If width and height attributes are NOT set, image container size will be detected to calculate result image size (according to user's DPR)
+
+*Note*: If only width or height attributes is set, ratio is going to be taken from ci-ratio image attribute
 
 ## <a name="image_properties"></a> Image properties
 

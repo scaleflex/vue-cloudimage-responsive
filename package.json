@@ -1,6 +1,6 @@
 {
   "name": "vue-cloudimage-responsive",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
   "description": "Cloudimage Responsive will smartly resize, compress and accelerate images across the World in your site for all devices. The plugin supports lazy loading technique with blur hash placeholder.",
@@ -36,7 +36,7 @@
     "publish-demo": "npm run build-demo && npm run deploy"
   },
   "dependencies": {
-    "cloudimage-responsive-utils": "^2.2.0",
+    "cloudimage-responsive-utils": "^2.3.0",
     "core-js": "^3.15.2"
   },
   "peerDependencies": {

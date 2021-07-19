@@ -25,6 +25,14 @@ Types of changes:
 - ...
 
 -------------
+## 1.2.0 - 2021-07-19
+
+### Deprecated
+
+- Property **ignoreNodeImgSize** is deprecated. Use **imageSizeAttributes: 'ignore'** instead
+
+### Added
+- new property: **imageSizeAttributes**
 
 ## 1.1.0 2021-06-16
 ### Added

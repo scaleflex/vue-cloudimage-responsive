@@ -33,6 +33,7 @@ export default {
               xl: '(min-width: 1200px)' // from 1200    USUALSCREEN
             },
         params:this.cloudImageConfig.params? processParams(this.cloudImageConfig.params) :'org_if_sml=1', 
+        imageSizeAttributes: this.cloudImageConfig.imageSizeAttributes || 'use',
         innerWidth: typeof window !== 'undefined' ? window.innerWidth : null,
         previewQualityFactor: 10,
         doNotReplaceURL: this.cloudImageConfig.doNotReplaceURL || false,
