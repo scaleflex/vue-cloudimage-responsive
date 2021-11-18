@@ -25,6 +25,10 @@ Types of changes:
 - ...
 
 -------------
+## 1.3.0 - 2021-11-18
+### Added
+- possibility to remove API versions
+
 ## 1.2.0 - 2021-07-19
 
 ### Deprecated
