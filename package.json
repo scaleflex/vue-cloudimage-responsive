@@ -36,7 +36,7 @@
     "publish-demo": "npm run build-demo && npm run deploy"
   },
   "dependencies": {
-    "cloudimage-responsive-utils": "^2.3.0",
+    "cloudimage-responsive-utils": "^2.4.0",
     "core-js": "^3.15.2"
   },
   "peerDependencies": {
@@ -58,6 +58,7 @@
     "@babel/preset-env": "^7.14.7",
     "babel-loader": "^8.2.2",
     "babel-preset-vue": "^2.0.2",
+    "chokidar": "^3.5.2",
     "css-loader": "^3.6.0",
     "gh-pages": "^2.0.1",
     "html-webpack-plugin": "^4.5.2",

@@ -434,7 +434,7 @@
                     position: relative;
                   "
                 >
-                  <Img src="https://doc.cloudimg.io/v7/sample.li/boat.jpg" />
+                  <Img src="https://doc.cloudimg.io/sample.li/boat.jpg" />
                   <div class="border-box" />
                 </div>
               </div>
@@ -800,7 +800,7 @@ export default {
 />`,
       syntaxHighlight2: `<div style=" width: 200px, height: 200px ">
   <Img 
-    src="https://doc.cloudimg.io/v7/sample.li/boat.jpg"
+    src="https://doc.cloudimg.io/sample.li/boat.jpg"
   />
 </div>`,
       syntaxHighlight3: `<div style=" width: 200px, height: 200px ">
