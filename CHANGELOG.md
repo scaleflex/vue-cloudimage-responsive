@@ -25,7 +25,11 @@ Types of changes:
 - ...
 
 -------------
-## 1.3.1 - 2022-1-4
+## 1.3.2 - 2022-01-04
+### Fixed
+- change devicePixelRatioList to [1, 1.5, 2]
+
+## 1.3.1 - 2022-01-04
 ### updated
 - utils version to fix img-src starts with "//"
 ## 1.3.0 - 2021-11-18
