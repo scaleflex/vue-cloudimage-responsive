@@ -25,6 +25,10 @@ Types of changes:
 - ...
 
 -------------
+## 1.3.3 - 2022-03-02
+### Fixed
+- low preview
+
 ## 1.3.2 - 2022-02-09
 ### Fixed
 - change devicePixelRatioList to [1, 1.5, 2]
