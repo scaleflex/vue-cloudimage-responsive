@@ -1,17 +1,16 @@
 <template>
-  <img v-if="server" :alt="alt" :src="BASE_64_PLACEHOLDER" />
   <lazy-component
-    v-else-if="!server && properties.config.lazyLoading && lazyLoadActive"
+    v-if="!server && properties.config.lazyLoading && lazyLoadActive"
     @show="handler"
   >
     <div :class="loadedStyle" :style="picture">
       <div
         :style="previewWrapper"
-        v-if="data.preview && data.operation !== 'bound'"
+        v-if="processedImage.preview && processedImage.operation !== 'bound'"
       >
         <img
           :style="previewImg"
-          v-bind:src="data.previewCloudimgURL"
+          v-bind:src="processedImage.previewCloudimgURL"
           alt="low quality preview image"
           @load="onPreviewLoaded"
         />
@@ -25,14 +24,14 @@
     </div>
   </lazy-component>
 
-  <div v-else :class="loadedStyle" :style="picture">
+  <div v-else-if="!server" :class="loadedStyle" :style="picture">
     <div
       :style="previewWrapper"
-      v-if="data.preview && data.operation !== 'bound'"
+      v-if="processedImage.preview && processedImage.operation !== 'bound'"
     >
       <img
         :style="previewImg"
-        v-bind:src="data.previewCloudimgURL"
+        v-bind:src="processedImage.previewCloudimgURL"
         alt="low quality preview image"
         @load="onPreviewLoaded"
       />
@@ -40,8 +39,8 @@
     <img
       v-bind:alt="alt"
       :style="imgStyle"
+      v-bind:src="processedImage.cloudimgURL"
       v-bind:ratio="otherProps.ratio"
-      v-bind:src="data.cloudimgURL"
       @load="_onImgLoad"
       :srcset="cloudimgSRCSET"
     />
@@ -50,7 +49,6 @@
 
 <script>
 import { isServer, processReactNode } from "cloudimage-responsive-utils";
-import { BASE_64_PLACEHOLDER } from "cloudimage-responsive-utils/dist/constants";
 import { getFilteredProps } from "./utils";
 import { imgStyles as styles } from "cloudimage-responsive-utils";
 
@@ -96,7 +94,6 @@ export default {
   data() {
     return {
       server: isServer(),
-      BASE_64_PLACEHOLDER,
       lazyLoadActive: true,
       cloudimgURL: "",
       processed: false,
@@ -104,7 +101,7 @@ export default {
       loadedImageWidth: "",
       loadedImageHeight: "",
       loadedImageRatio: "",
-      data: "",
+      processedImage: {},
       properties: {
         src: this.src,
         width: this.width,
@@ -126,14 +123,14 @@ export default {
       picture: "",
       previewWrapper: "",
       previewImg: "",
-      loadedStyle: "",
+      loadedStyle: {},
     };
   },
   mounted() {
     if (this.server) return;
 
-    const operation = this.data.operation;
-    const preview = this.data.preview;
+    const operation = this.processedImage.operation;
+    const preview = this.processedImage.preview;
     const loaded = this.loaded;
     const previewLoaded = this.previewLoaded;
     const placeholderBackground = this.cloudProvider.config
@@ -144,6 +141,18 @@ export default {
       imgNodeHeight,
       ...otherProps
     } = getFilteredProps(this.properties);
+
+    const {
+      config: { delay },
+    } = this.cloudProvider;
+
+    if (typeof delay !== "undefined") {
+      setTimeout(() => {
+        this.processImg();
+      }, delay);
+    } else {
+      this.processImg();
+    }
 
     //initial loading style
     this.loadedStyle = [this.className, "cloudimage-background", "loading"]
@@ -161,25 +170,12 @@ export default {
       preserveSize,
       imgNodeWidth,
       imgNodeHeight,
-      ratio: this.data.ratio || this.loadedImageRatio || this.properties.ratio,
+      ratio: this.processedImage.ratio || this.loadedImageRatio,
       previewLoaded,
       loaded,
       placeholderBackground,
       operation,
     });
-
-    const {
-      config: { delay },
-    } = this.cloudProvider;
-
-    if (typeof delay !== "undefined") {
-      setTimeout(() => {
-        this.processImg();
-      }, delay);
-    } else {
-      this.processImg();
-    }
-
     //the value from filter and passing to data
     this.preserveSize = preserveSize;
     this.imgNodeWidth = imgNodeWidth;
@@ -188,21 +184,16 @@ export default {
   },
   updated() {
     //srcset value after processing image
-    if (this.data.cloudimgSRCSET) {
-      const cloudimgSRCSET = this.data.cloudimgSRCSET
+    if (this.processedImage.cloudimgSRCSET) {
+      const cloudimgSRCSET = this.processedImage.cloudimgSRCSET
         .map(({ dpr, url }) => `${url} ${dpr}x`)
         .join(", ");
       this.cloudimgSRCSET = cloudimgSRCSET;
     }
-
-    // console.log(this.properties.src, this.data.ratio);
-    // console.log(this.properties.src, this.properties.ratio);
-    // console.log(this.properties.src, this.loadedImageRatio);
-    // console.log(this);
   },
 
   methods: {
-    handler(component) {
+    handler() {
       setTimeout(() => {
         this.lazyLoadActive = false;
       }, 100);
@@ -216,20 +207,20 @@ export default {
         update,
         windowScreenBecomesBigger
       );
+
       if (data) {
         //if size is defined so data is defined if not error well appear
-        this.data = data;
+        this.processedImage = data;
       }
     },
 
     onPreviewLoaded(event) {
       if (this.previewLoaded) return;
-      // console.log(event.target);
+
       this.updateLoadedImageSize(event.target);
       this.previewLoaded = true;
     },
     updateLoadedImageSize(image) {
-      // console.log(image.naturalWidth, image.naturalHeight);
       this.loadedImageWidth = image.naturalWidth;
       this.loadedImageHeight = image.naturalHeight;
       this.loadedImageRatio = image.naturalWidth / image.naturalHeight;
@@ -247,10 +238,10 @@ export default {
   },
 
   watch: {
-    "properties.config.innerWidth": function (newVal, oldVal) {
+    "properties.config.innerWidth": function (_, oldVal) {
       if (this.server) return;
-      const operation = this.data.operation;
-      const preview = this.data.preview;
+      const operation = this.processedImage.operation;
+      const preview = this.processedImage.preview;
       const loaded = this.loaded;
       const { preserveSize, imgNodeWidth, imgNodeHeight } = getFilteredProps(
         this.properties
@@ -279,29 +270,27 @@ export default {
         preserveSize,
         imgNodeWidth,
         imgNodeHeight,
-        ratio: this.data.ratio || this.loadedImageRatio,
+        ratio: this.processedImage.ratio || this.loadedImageRatio,
         previewLoaded,
         loaded,
         placeholderBackground,
         operation,
       });
     },
-    "properties.src": function (newVal, oldVal) {
+    "properties.src": function (_, oldVal) {
       const { src } = this.properties;
       if (src !== oldVal.src) {
         this.processImg();
       }
     },
     loaded: function (newVal) {
-      const operation = this.data.operation;
-      const preview = this.data.preview;
+      const operation = this.processedImage.operation;
+      const preview = this.processedImage.preview;
       const loaded = newVal;
-      const { preserveSize, imgNodeWidth, imgNodeHeight } = getFilteredProps(
-        this.properties
-      );
+
+      const { preserveSize, imgNodeWidth, imgNodeHeight } = getFilteredProps(this.properties);
       const previewLoaded = this.previewLoaded;
-      const placeholderBackground = this.cloudProvider.config
-        .placeholderBackground;
+      const placeholderBackground = this.cloudProvider.config.placeholderBackground;
 
       if (loaded) {
         this.loadedStyle = [this.className, "cloudimage-background", "loaded"]
@@ -320,7 +309,7 @@ export default {
           preserveSize,
           imgNodeWidth,
           imgNodeHeight,
-          ratio: this.data.ratio || this.loadedImageRatio,
+          ratio: this.processedImage.ratio || this.loadedImageRatio,
           previewLoaded,
           loaded,
           placeholderBackground,

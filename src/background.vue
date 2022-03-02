@@ -7,12 +7,12 @@
     @show="handler"
   >
     <div :class="loadedStyle" :style="container">
-      <div v-if="data.preview" :style="previewBgWrapper">
+      <div v-if="processedImage.preview" :style="previewBgWrapper">
         <div :style="previewBg" />
       </div>
 
       <div
-        v-if="data.preview"
+        v-if="processedImage.preview"
         class="cloudimage-background-content"
         style="position: relative"
       >
@@ -22,11 +22,11 @@
     </div>
   </lazy-component>
   <div v-else :class="loadedStyle" :style="container">
-    <div v-if="data.preview" :style="previewBgWrapper">
+    <div v-if="processedImage.preview" :style="previewBgWrapper">
       <div :style="previewBg" />
     </div>
     <div
-      v-if="data.preview"
+      v-if="processedImage.preview"
       class="cloudimage-background-content"
       style="position: relative"
     >
@@ -39,7 +39,6 @@
 <script>
 import { isServer, processReactNode } from "cloudimage-responsive-utils";
 import { backgroundStyles as styles } from "cloudimage-responsive-utils";
-import { getFilteredBgProps } from "./utils.js";
 export default {
   // geting the data from the provider
   inject: ["cloudProvider"],
@@ -89,7 +88,7 @@ export default {
       cloudimgURL: "",
       processed: false,
       loaded: false,
-      data: "",
+      processedImage: {},
       properties: {
         src: this.src,
         params: this.params,
@@ -103,21 +102,16 @@ export default {
         className: this.className,
         onImgLoad: this.onImgLoad,
       },
-      container: "",
-      previewBgWrapper: "",
+      container: {},
+      previewBgWrapper: {},
       previewBg: "",
-      lazyLoadConfig: "",
-      otherProps: "",
-      loadedStyle: "",
+      lazyLoadConfig: {},
+      otherProps: {},
+      loadedStyle: {},
     };
   },
   mounted() {
     if (this.server) return;
-
-    const style = this.properties.style;
-
-    const cloudimgURL = this.data.cloudimgURL;
-    const previewCloudimgURL = this.data.previewCloudimgURL;
     const loaded = this.loaded;
 
     //initial loading style
@@ -129,11 +123,10 @@ export default {
     this.processBg();
   },
   methods: {
-    handler(component) {
+    handler() {
       const style = this.properties.style;
-      const cloudimgURL = this.data.cloudimgURL;
-      const previewCloudimgURL = this.data.previewCloudimgURL;
-      const loaded = this.loaded;
+      const cloudimgURL = this.processedImage.cloudimgURL;
+      const previewCloudimgURL = this.processedImage.previewCloudimgURL;
 
       this.lazyLoadActive = false;
       //initial value container style
@@ -151,7 +144,7 @@ export default {
       );
 
       if (data) {
-        this.data = data;
+        this.processedImage = data;
       }
     },
     preLoadImg(cloudimgURL) {
@@ -173,10 +166,10 @@ export default {
   },
 
   watch: {
-    "properties.config.innerWidth": function (newVal, oldVal) {
+    "properties.config.innerWidth": function (_, oldVal) {
       const style = this.properties.style;
-      const cloudimgURL = this.data.cloudimgURL;
-      const previewCloudimgURL = this.data.previewCloudimgURL;
+      const cloudimgURL = this.processedImage.cloudimgURL;
+      const previewCloudimgURL = this.processedImage.previewCloudimgURL;
       const loaded = this.loaded;
 
       if (this.server) return;
@@ -196,7 +189,7 @@ export default {
       //updating value of preview style if width changed
       this.previewBg = styles.previewBg({ previewCloudimgURL });
     },
-    "properties.src": function (newVal, oldVal) {
+    "properties.src": function (_, oldVal) {
       const { src } = this.properties;
       if (src !== oldVal.src) {
         this.processBg();
@@ -205,8 +198,8 @@ export default {
     loaded: function (newVal) {
       const loaded = newVal;
       const style = this.properties.style;
-      const cloudimgURL = this.data.cloudimgURL;
-      const previewCloudimgURL = this.data.previewCloudimgURL;
+      const cloudimgURL = this.processedImage.cloudimgURL;
+      const previewCloudimgURL = this.processedImage.previewCloudimgURL;
 
       if (loaded) {
         //if loaded change style to loaded
@@ -233,10 +226,10 @@ export default {
 
         if (typeof delay !== "undefined") {
           setTimeout(() => {
-            this.preLoadImg(this.data.cloudimgURL);
+            this.preLoadImg(this.processedImage.cloudimgURL);
           }, delay);
         } else {
-          this.preLoadImg(this.data.cloudimgURL);
+          this.preLoadImg(this.processedImage.cloudimgURL);
         }
       }
     },
