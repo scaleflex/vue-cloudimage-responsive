@@ -131,14 +131,6 @@ new Vue({
 ```
 
 ```jsx
-import Vue from 'vue';
-import Img, { CloudimageProvider } from 'vue-cloudimage-responsive';
-
-const cloudimageConfig = {
-  token: 'demo',
-  baseURL: 'https://jolipage.airstore.io/'
-};
-
 <template>
  <div id="app">
 <CloudImageProvider v-bind:cloudImageConfig="cloudimageConfig">
@@ -149,9 +141,17 @@ const cloudimageConfig = {
 </template>
 
 <script>
+import Vue from 'vue';
+import Img, { CloudImageProvider } from 'vue-cloudimage-responsive';
+
+const cloudimageConfig = {
+  token: 'demo',
+  baseURL: 'https://jolipage.airstore.io/'
+};
+
 export default{
-    components:{
-    CloudimageProvider,
+    components: {
+    CloudImageProvider,
     Img
     }
 }
