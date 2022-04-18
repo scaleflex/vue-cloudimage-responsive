@@ -25,6 +25,10 @@ Types of changes:
 - ...
 
 -------------
+## 1.3.4 - 2022-04-18
+### Added
+- possibility to add `doNotReplaceURL` to single image
+
 ## 1.3.3 - 2022-03-02
 ### Fixed
 - low preview
