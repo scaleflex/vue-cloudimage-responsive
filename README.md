@@ -412,6 +412,11 @@ Multiple params can be applied, separated by "`&`" e.g. **wat_scale=35&wat_gravi
 ```javascript
 params = 'gray=1&bright=10'
 ```
+### doNotReplaceURL
+
+###### Type: **bool** | Default: **false**
+
+If set to **true** the plugin will only add query params to the given source of image.
 
 #### alternative syntax: type: **Object**
 

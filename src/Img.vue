@@ -90,6 +90,10 @@ export default {
       type: Function,
       default: undefined,
     },
+    doNotReplaceURL: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -113,6 +117,7 @@ export default {
         className: this.className,
         config: this.cloudProvider.config,
         onImgLoad: this.onImgLoad,
+        doNotReplaceURL: this.doNotReplaceURL
       },
       preserveSize: "",
       imgNodeWidth: "",

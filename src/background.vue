@@ -80,6 +80,10 @@ export default {
       type: Function,
       default: undefined,
     },
+    doNotReplaceURL: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -101,6 +105,7 @@ export default {
         alt: this.alt,
         className: this.className,
         onImgLoad: this.onImgLoad,
+        doNotReplaceURL: this.doNotReplaceURL
       },
       container: {},
       previewBgWrapper: {},
