@@ -509,8 +509,6 @@ To see the full cloudimage documentation [click here](https://docs.cloudimage.io
 Tested in all modern browsers and IE 11.
 
 ## <a name="ui_family"></a>Filerobot UI Familiy
-
-## <a name="ui_family"></a>Filerobot UI Familiy
 * [Cloudimage Responsive](https://github.com/scaleflex/js-cloudimage-responsive)
 * [JS Cloudimage 360 view](https://github.com/scaleflex/js-cloudimage-360-view)
 * [Image Editor](https://github.com/scaleflex/filerobot-image-editor)
