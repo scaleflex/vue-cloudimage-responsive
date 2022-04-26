@@ -510,11 +510,11 @@ Tested in all modern browsers and IE 11.
 
 ## <a name="ui_family"></a>Filerobot UI Familiy
 
-- [JS Cloudimage Responsive](https://github.com/scaleflex/js-cloudimage-responsive)
-- [Angular Cloudimage Responsive](https://github.com/scaleflex/ng-cloudimage-responsive)
-- [JS Cloudimage 360 view](https://github.com/scaleflex/js-cloudimage-360-view)
-- [Image Editor](https://github.com/scaleflex/filerobot-image-editor)
-- [Uploader](https://github.com/scaleflex/filerobot-uploader)
+## <a name="ui_family"></a>Filerobot UI Familiy
+* [Cloudimage Responsive](https://github.com/scaleflex/js-cloudimage-responsive)
+* [JS Cloudimage 360 view](https://github.com/scaleflex/js-cloudimage-360-view)
+* [Image Editor](https://github.com/scaleflex/filerobot-image-editor)
+* [Filerobot Media Asset Widget](https://scaleflex.cloudimg.io/v7/plugins/filerobot-widget/demo/index.html?vh=d6c246&func=proxy)
 
 ## <a name="contributing"></a>Contributing!
 
