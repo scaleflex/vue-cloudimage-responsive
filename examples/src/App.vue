@@ -359,7 +359,7 @@
                 {{ " " }}
                 <a
                   :href="
-                    'https://cloudimage.public.airstore.io/demo/' + image.src
+                    'https://cdn.scaleflex.it/demo/' + image.src
                   "
                   target="_blank"
                   >link</a
@@ -391,7 +391,7 @@
                 {{ " " }}
                 <a
                   :href="
-                    'https://cloudimage.public.airstore.io/demo/' +
+                    'https://cdn.scaleflex.it/demo/' +
                     images[17].src
                   "
                   target="_blank"
@@ -755,7 +755,7 @@ import Prism from "vue-prism-component";
 //cloud configuration
 const cloudImageConfig = {
   token: "demo",
-  baseURL: "https://cloudimage.public.airstore.io/demo/",
+  baseURL: "https://cdn.scaleflex.it/demo/",
   params: "ci_info=1&org_if_sml=1",
   placeholderBackground: "#e1e1e1",
   limitFactor: 10,
@@ -835,13 +835,12 @@ import Img, { CloudimageProvider } from 'vue-cloudimage-responsive';
 
 const cloudimageConfig = {
   token: 'demo',
-  baseURL: 'https://jolipage.airstore.io/',
+  baseURL: 'https://cdn.scaleflex.it/',
 };
 
 const cloudimageConfigWithCustomCNAMEDomain = {
   token: 'demo',
-  baseURL: 'https://jolipage.airstore.io/',
-  customDomain: 'images.airstore.io'
+  baseURL: 'https://cdn.scaleflex.it/',
 };
 
 <template>
