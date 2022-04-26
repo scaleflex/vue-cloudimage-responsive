@@ -69,7 +69,7 @@ Cloudimage, contact us at
 ## Table of contents
 
 - [Demo](#demo)
-* [Responsive plugins family](#plugin_family)
+- [Responsive plugins family](#plugin_family)
 - [Requirements](#requirements)
 - [Step 1: Installation](#installation)
 - [Step 2: Initialize](#initialize)
