@@ -62,7 +62,7 @@ export default {
     }
   },
 
-  beforeDestroy() {
+  beforeUnmount() {
     window.removeEventListener(
       'resize',
       debounce(100, () => {

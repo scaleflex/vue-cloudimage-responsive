@@ -1,12 +1,12 @@
-import Vue from 'vue';
-import App from './App.vue';
-import './assets/style.css';
+import { createApp } from 'vue'
+import App from './App.vue'
 import VueLazyload from 'vue-lazyload';
+import './assets/style.css';
 
-Vue.use(VueLazyload, {
+const app = createApp(App);
+
+app.use(VueLazyload, {
   lazyComponent: true
 });
 
-new Vue({
-  render: h => h(App)
-}).$mount('#app');
+app.mount('#app');
