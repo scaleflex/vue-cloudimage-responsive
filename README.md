@@ -138,7 +138,12 @@ CDN traffic per month for free.
 using npm
 
 ```
- npm install --save vue-cloudimage-responsive-plain vue-lazyload
+ npm install vue-cloudimage-responsive vue-lazyload
+```
+or using yarn
+
+```
+ yarn add vue-cloudimage-responsive vue-lazyload
 ```
 
 ## <a name="initialize"></a>Step 2: Initialize
