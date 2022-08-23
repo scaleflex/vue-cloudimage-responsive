@@ -16,12 +16,12 @@ export const images = [
   },
   {
     src: 'tim-patch.jpg',
-    ratio: 5.464 / 3.64,
+    ratio: 5.464 / 3.640,
     original_size: '7.5mb'
   },
   {
     src: 'veeterzy.jpg',
-    ratio: 5.76 / 3.84,
+    ratio: 5.760 / 3.840,
     original_size: '8.5mb'
   },
   {
@@ -82,7 +82,7 @@ export const images = [
   },
   {
     src: 'ishan-seefromthesky.jpg',
-    ratio: 5.464 / 3.07,
+    ratio: 5.464 / 3.070,
     original_size: '4.2mb'
   },
   {
@@ -92,7 +92,7 @@ export const images = [
   },
   {
     src: 'dino-reichmuth-11.jpg',
-    ratio: 5.256 / 7.88,
+    ratio: 5.256 / 7.880,
     original_size: '11mb'
   }
 ];

@@ -2,20 +2,13 @@
   <div v-if="processed">
     <slot></slot>
   </div>
-  <lazy-component
-    v-else-if="properties.config.lazyLoading && lazyLoadActive"
-    @show="handler"
-  >
+  <lazy-component v-else-if="properties.config.lazyLoading && lazyLoadActive" @show="handler">
     <div :class="loadedStyle" :style="container">
       <div v-if="processedImage.preview" :style="previewBgWrapper">
         <div :style="previewBg" />
       </div>
 
-      <div
-        v-if="processedImage.preview"
-        class="cloudimage-background-content"
-        style="position: relative"
-      >
+      <div v-if="processedImage.preview" class="cloudimage-background-content" style="position: relative">
         <slot></slot>
       </div>
       <slot v-else></slot>
@@ -25,11 +18,7 @@
     <div v-if="processedImage.preview" :style="previewBgWrapper">
       <div :style="previewBg" />
     </div>
-    <div
-      v-if="processedImage.preview"
-      class="cloudimage-background-content"
-      style="position: relative"
-    >
+    <div v-if="processedImage.preview" class="cloudimage-background-content" style="position: relative">
       <slot></slot>
     </div>
     <slot v-else></slot>
