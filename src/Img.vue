@@ -85,7 +85,12 @@ export default {
       loadedImageWidth: "",
       loadedImageHeight: "",
       loadedImageRatio: "",
-      processedImage: {},
+      processedImage: {
+        operation: "",
+        ratio: 1,
+        preview: "",
+        cloudimgSRCSET: [],
+      },
       properties: {
         src: this.src,
         width: this.width,
@@ -142,7 +147,7 @@ export default {
     //initial loading style
     this.loadedStyle = `${this.className} cloudimage-background loading`
       .trim();
-    //initial value preview wrapper stylr
+    //initial value preview wrapper style
     this.previewWrapper = styles.previewWrapper();
     //initial value preview img style
     this.previewImg = styles.previewImg({ loaded, operation });
