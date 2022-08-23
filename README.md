@@ -1,4 +1,4 @@
-[![Release](https://img.shields.io/badge/release-v1.3.5-blue.svg)](https://github.com/scaleflex/js-cloudimage-responsive/releases)
+[![Release](https://img.shields.io/github/v/release/scaleflex/vue-cloudimage-responsive)](https://github.com/scaleflex/vue-cloudimage-responsive/releases)
 [![Free plan](https://img.shields.io/badge/price-includes%20free%20plan-green.svg)](https://www.cloudimage.io/en/home#b38181a6-b9c8-4015-9742-7b1a1ad382d5)
 [![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg)](#contributing)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -70,6 +70,7 @@ Cloudimage, contact us at
 
 - [Demo](#demo)
 - [Responsive plugins family](#plugin_family)
+- [Compatibility](#compatibility)
 - [Requirements](#requirements)
 - [Step 1: Installation](#installation)
 - [Step 2: Initialize](#initialize)
@@ -94,13 +95,6 @@ loading time.
 In order to use Cloudimage responsive plugins on your single-page application, please check out Cloudimage responsive plugins for vanilla Javascript and the most popular Javascript frameworks.
 
 <details>
-<summary>Javascript</summary>
-<a href="https://github.com/scaleflex/js-cloudimage-responsive">Js Cloudimage Responsive (Low Quality Preview)</a><br/>
-<a href="https://github.com/scaleflex/js-cloudimage-responsive/blob/master/README-BLUR-HASH.md">Js Cloudimage Responsive (Blur-hash)</a><br/>
-<a href="https://github.com/scaleflex/js-cloudimage-responsive/blob/master/README-PLAIN.md">Js Cloudimage Responsive (Plain)</a>
-</details>
-
-<details>
 <summary>React</summary>
 <a href="https://github.com/scaleflex/react-cloudimage-responsive">React Cloudimage Responsive (Low Quality Preview)</a><br/>
 <a href="https://github.com/scaleflex/react-cloudimage-responsive-blur-hash">React Cloudimage Responsive (Blur-hash)</a><br/>
@@ -108,9 +102,27 @@ In order to use Cloudimage responsive plugins on your single-page application, p
 </details>
 
 <details>
+<summary>Next.js</summary>
+<a href="https://github.com/scaleflex/next-cloudimage-responsive">Vue Cloudimage Responsive (Low Quality Preview)</a><br/>
+</details>
+
+<details>
+<summary>Vue.js</summary>
+<a href="https://github.com/scaleflex/vue-cloudimage-responsive">Vue Cloudimage Responsive (Low Quality Preview)</a><br/>
+<a href="https://github.com/scaleflex/vue-cloudimage-responsive-blur-hash">Vue Cloudimage Responsive (Blur-hash)</a><br/>
+<a href="https://github.com/scaleflex/vue-cloudimage-responsive-plain">Vue Cloudimage Responsive (Plain)</a>
+</details>
+
+<details>
 <summary>Angular</summary>
 <a href="https://github.com/scaleflex/ng-cloudimage-responsive">Angular Cloudimage Responsive (Low Quality Preview)</a><br/>
 </details>
+
+## <a name="compatibility"></a> Compatibility
+| Version | Vue Version |
+|---------|--------------|
+| >2.0.0   | >=3.x.x |
+| <=2.0.0   | <=2.x.x |
 
 ## <a name="requirements"/> Requirements
 
@@ -376,7 +388,7 @@ calculation of image container.
 
 If width and height attributes are set:
 
-**use** - width & height attributes values will be used to calculate image size (according to user's DPR) and **ratio**. 
+**use** - width & height attributes values will be used to calculate image size (according to user's DPR) and **ratio**.
 
 **take-ratio** - width & height attributes values will be used only to calculate **ratio**.
 
