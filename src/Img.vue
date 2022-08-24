@@ -1,27 +1,69 @@
 <template>
-  <lazy-component v-if="!server && properties.config.lazyLoading && lazyLoadActive" @show="handler">
-    <img v-if="otherProps.disableAnimation" :alt="alt" :style="imgStyles" v-bind:ratio="otherProps.ratio" @load="_onImgLoad" />
+  <lazy-component
+    v-if="!server && properties.config.lazyLoading && lazyLoadActive" 
+    @show="handler"
+  >
+    <img
+        v-if="otherProps.disableAnimation"
+        :alt="alt" :style="imgStyles"
+        v-bind:ratio="otherProps.ratio"
+        @load="_onImgLoad"
+      />
 
     <div v-else :class="loadedStyle" :style="picture">
-      <div :style="previewWrapper" v-if="processedImage.preview && processedImage.operation !== 'bound'">
-        <img :style="previewImg" v-bind:src="processedImage.previewCloudimgURL" alt="low quality preview for {{alt}}"
-          @load="onPreviewLoaded" />
+      <div
+        :style="previewWrapper"
+        v-if="processedImage.preview && processedImage.operation !== 'bound'"
+      >
+        <img
+          :style="previewImg"
+          v-bind:src="processedImage.previewCloudimgURL"
+          alt="low quality preview for {{alt}}"
+          @load="onPreviewLoaded"
+        />
       </div>
-      <img v-bind:alt="alt" :style="imgStyle" v-bind:src="processedImage.cloudimgURL"
-        v-bind:ratio="otherProps.ratio" @load="_onImgLoad" :srcset="cloudimgSRCSET" />
+      <img
+        v-bind:alt="alt"
+        :style="imgStyle"
+        v-bind:src="processedImage.cloudimgURL"
+        v-bind:ratio="otherProps.ratio"
+        @load="_onImgLoad"
+        :srcset="cloudimgSRCSET"
+      />
     </div>
   </lazy-component>
 
   <template v-else-if="!server">
-    <img v-if="otherProps.disableAnimation" :alt="alt" :style="imgStyles" v-bind:ratio="otherProps.ratio" @load="_onImgLoad" />
+    <img
+      v-if="otherProps.disableAnimation"
+      :alt="alt"
+      :style="imgStyles"
+      v-bind:ratio="otherProps.ratio"
+      @load="_onImgLoad"
+    />
 
-    <div v-else :class="loadedStyle" :style="picture">
-      <div :style="previewWrapper" v-if="processedImage.preview && processedImage.operation !== 'bound'">
-        <img :style="previewImg" v-bind:src="processedImage.previewCloudimgURL" alt="low quality preview for {{alt}}"
-          @load="onPreviewLoaded" />
+    <div
+      v-else :class="loadedStyle"
+      :style="picture">
+      <div
+        :style="previewWrapper"
+        v-if="processedImage.preview && processedImage.operation !== 'bound'"
+      >
+        <img
+          :style="previewImg"
+          v-bind:src="processedImage.previewCloudimgURL"
+          alt="low quality preview for {{alt}}"
+          @load="onPreviewLoaded"
+        />
       </div>
-      <img v-bind:alt="alt" :style="imgStyle" v-bind:src="processedImage.cloudimgURL"
-        v-bind:ratio="otherProps.ratio" @load="_onImgLoad" :srcset="cloudimgSRCSET" />
+      <img
+        v-bind:alt="alt"
+        :style="imgStyle"
+        v-bind:src="processedImage.cloudimgURL"
+        v-bind:ratio="otherProps.ratio"
+        @load="_onImgLoad"
+        :srcset="cloudimgSRCSET"
+      />
     </div>
   </template>
 </template>
@@ -123,8 +165,7 @@ export default {
     const preview = this.processedImage.preview;
     const loaded = this.loaded;
     const previewLoaded = this.previewLoaded;
-    const placeholderBackground = this.cloudProvider.config
-      .placeholderBackground;
+    const placeholderBackground = this.cloudProvider.config.placeholderBackground;
     const {
       preserveSize,
       imgNodeWidth,
@@ -145,8 +186,8 @@ export default {
     }
 
     //initial loading style
-    this.loadedStyle = `${this.className} cloudimage-background loading`
-      .trim();
+    this.loadedStyle = [this.className, "cloudimage-background", "loading"]
+      .join(" ").trim();
     //initial value preview wrapper style
     this.previewWrapper = styles.previewWrapper();
     //initial value preview img style
@@ -308,7 +349,8 @@ export default {
           operation,
         });
       }
-      this.loadedStyle = `${this.className} cloudimage-background ${loaded ? 'loaded' : 'loading'}`
+      this.loadedStyle = [this.className, "cloudimage-background", "loading"]
+        .join(" ")
         .trim();
     },
   },

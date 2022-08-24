@@ -28,7 +28,7 @@
     "resize"
   ],
   "scripts": {
-    "serve": "webpack-dev-server --mode development --config webpack-demo.config.js",
+    "start-demo": "webpack-dev-server --mode development --config webpack-demo.config.js",
     "clean": "rimraf dist",
     "dist": "node build.js",
     "build-demo": "webpack --mode production --config webpack-demo.config.js",
@@ -36,7 +36,7 @@
     "publish-demo": "npm run build-demo && npm run deploy"
   },
   "dependencies": {
-    "cloudimage-responsive-utils": "^2.4.8",
+    "cloudimage-responsive-utils": "^2.5.1",
     "core-js": "^3.15.2",
     "throttle-debounce": "^2.3.0"
   },
@@ -57,6 +57,7 @@
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/plugin-syntax-import-meta": "^7.0.0",
     "@babel/preset-env": "^7.14.7",
+    "@vue/compiler-sfc": "^3.1.0",
     "babel-loader": "^8.2.2",
     "babel-preset-vue": "^2.0.2",
     "chokidar": "^3.5.2",
@@ -76,7 +77,6 @@
     "vue-loader": "^16.0.0",
     "vue-prism-component": "^2.0.0",
     "vue-style-loader": "^4.1.3",
-    "@vue/compiler-sfc": "^3.1.0",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.2"
