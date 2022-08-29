@@ -37,8 +37,7 @@
 </template>
 
 <script>
-import { isServer, processReactNode } from "cloudimage-responsive-utils";
-import { backgroundStyles as styles } from "cloudimage-responsive-utils";
+import { isServer, processReactNode, backgroundStyles as styles } from "cloudimage-responsive-utils";
 export default {
   // geting the data from the provider
   inject: ["cloudProvider"],

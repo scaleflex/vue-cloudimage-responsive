@@ -22,6 +22,7 @@ export default {
           this.cloudImageConfig.placeholderBackground || '#f4f4f4',
         baseURL: this.cloudImageConfig.baseUrl || this.cloudImageConfig.baseURL,
         ratio: 1.5,
+        delay: this.cloudImageConfig.delay || 0,
         exactSize: false,
         presets: this.cloudImageConfig.presets
           ? this.cloudImageConfig.presets
@@ -32,7 +33,7 @@ export default {
               lg: '(min-width: 992px)', // 992 - 1199   SMALL_LAPTOP_SCREEN
               xl: '(min-width: 1200px)' // from 1200    USUALSCREEN
             },
-        params:this.cloudImageConfig.params? processParams(this.cloudImageConfig.params) :'org_if_sml=1', 
+        params:this.cloudImageConfig.params? processParams(this.cloudImageConfig.params) :'org_if_sml=1',
         apiVersion: 'v7',
         imageSizeAttributes: this.cloudImageConfig.imageSizeAttributes || 'use',
         innerWidth: typeof window !== 'undefined' ? window.innerWidth : null,
@@ -62,7 +63,7 @@ export default {
     }
   },
 
-  beforeDestroy() {
+  beforeUnmount() {
     window.removeEventListener(
       'resize',
       debounce(100, () => {

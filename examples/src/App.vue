@@ -870,8 +870,7 @@ const cloudimageConfigWithCustomCNAMEDomain = {
     };
   },
   methods: {
-    onImgLoad(params) {
-      console.log(params);
+    onImgLoad() {
     },
   },
 };

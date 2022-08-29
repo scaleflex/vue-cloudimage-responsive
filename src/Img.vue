@@ -1,9 +1,18 @@
 <template>
   <lazy-component
-    v-if="!server && properties.config.lazyLoading && lazyLoadActive"
+    v-if="!server && properties.config.lazyLoading && lazyLoadActive" 
     @show="handler"
   >
-    <div :class="loadedStyle" :style="picture">
+    <img
+        v-if="properties.disableAnimation"
+        :src = "processedImage.cloudimgURL"
+        :srcset="cloudimgSRCSET"
+        :alt="properties.alt" :style="imgStyles"
+        v-bind:ratio="otherProps.ratio"
+        @load="_onImgLoad"
+      />
+
+    <div v-else :class="loadedStyle" :style="picture">
       <div
         :style="previewWrapper"
         v-if="processedImage.preview && processedImage.operation !== 'bound'"
@@ -11,46 +20,63 @@
         <img
           :style="previewImg"
           v-bind:src="processedImage.previewCloudimgURL"
-          alt="low quality preview image"
+          :alt="'low quality preview for '+ properties.alt"
           @load="onPreviewLoaded"
         />
       </div>
       <img
-        :alt="alt"
+        v-bind:alt="properties.alt"
         :style="imgStyle"
+        v-bind:src="processedImage.cloudimgURL"
         v-bind:ratio="otherProps.ratio"
         @load="_onImgLoad"
+        :srcset="cloudimgSRCSET"
       />
     </div>
   </lazy-component>
 
-  <div v-else-if="!server" :class="loadedStyle" :style="picture">
-    <div
-      :style="previewWrapper"
-      v-if="processedImage.preview && processedImage.operation !== 'bound'"
-    >
-      <img
-        :style="previewImg"
-        v-bind:src="processedImage.previewCloudimgURL"
-        alt="low quality preview image"
-        @load="onPreviewLoaded"
-      />
-    </div>
+  <template v-else-if="!server">
     <img
-      v-bind:alt="alt"
-      :style="imgStyle"
-      v-bind:src="processedImage.cloudimgURL"
+      v-if="properties.disableAnimation"
+      :src = "processedImage.cloudimgURL"
+      :srcset="cloudimgSRCSET"
+      :alt="properties.alt"
+      :style="imgStyles"
       v-bind:ratio="otherProps.ratio"
       @load="_onImgLoad"
-      :srcset="cloudimgSRCSET"
     />
-  </div>
+
+    <div
+      v-else :class="loadedStyle"
+      :style="picture">
+      <div
+        :style="previewWrapper"
+        v-if="processedImage.preview && processedImage.operation !== 'bound'"
+      >
+        <img
+          :style="previewImg"
+          v-bind:src="processedImage.previewCloudimgURL"
+          :alt="'low quality preview for '+ properties.alt"
+          @load="onPreviewLoaded"
+        />
+      </div>
+      <img
+        v-bind:alt="properties.alt"
+        :style="imgStyle"
+        v-bind:src="processedImage.cloudimgURL"
+        v-bind:ratio="otherProps.ratio"
+        @load="_onImgLoad"
+        :srcset="cloudimgSRCSET"
+      />
+    </div>
+  </template>
 </template>
 
 <script>
-import { isServer, processReactNode } from "cloudimage-responsive-utils";
+import {
+  isServer, processReactNode, generateAlt, imgStyles as styles
+} from "cloudimage-responsive-utils";
 import { getFilteredProps } from "./utils";
-import { imgStyles as styles } from "cloudimage-responsive-utils";
 
 export default {
   // geting the data from the provider
@@ -94,6 +120,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    disableAnimation: {
+      type: Boolean,
+      default: false,
+    }
   },
   data() {
     return {
@@ -105,7 +135,12 @@ export default {
       loadedImageWidth: "",
       loadedImageHeight: "",
       loadedImageRatio: "",
-      processedImage: {},
+      processedImage: {
+        operation: "",
+        ratio: 1,
+        preview: "",
+        cloudimgSRCSET: [],
+      },
       properties: {
         src: this.src,
         width: this.width,
@@ -113,11 +148,12 @@ export default {
         params: this.params,
         sizes: this.sizes,
         ratio: this.ratio,
-        alt: this.alt,
+        alt: this.alt || generateAlt(this.src),
         className: this.className,
         config: this.cloudProvider.config,
         onImgLoad: this.onImgLoad,
-        doNotReplaceURL: this.doNotReplaceURL
+        doNotReplaceURL: this.doNotReplaceURL,
+        disableAnimation: this.disableAnimation,
       },
       preserveSize: "",
       imgNodeWidth: "",
@@ -128,7 +164,7 @@ export default {
       picture: "",
       previewWrapper: "",
       previewImg: "",
-      loadedStyle: {},
+      loadedStyle: "",
     };
   },
   mounted() {
@@ -138,8 +174,7 @@ export default {
     const preview = this.processedImage.preview;
     const loaded = this.loaded;
     const previewLoaded = this.previewLoaded;
-    const placeholderBackground = this.cloudProvider.config
-      .placeholderBackground;
+    const placeholderBackground = this.cloudProvider.config.placeholderBackground;
     const {
       preserveSize,
       imgNodeWidth,
@@ -147,9 +182,11 @@ export default {
       ...otherProps
     } = getFilteredProps(this.properties);
 
+    console.log(otherProps);
+
     const {
-      config: { delay },
-    } = this.cloudProvider;
+      delay ,
+    } = this.properties.config;
 
     if (typeof delay !== "undefined") {
       setTimeout(() => {
@@ -160,17 +197,23 @@ export default {
     }
 
     //initial loading style
-    this.loadedStyle = [this.className, "cloudimage-background", "loading"]
-      .join(" ")
+    this.loadedStyle = `${this.className} cloudimage-background loading`
       .trim();
-    //initial value preview wrapper stylr
+    //initial value preview wrapper style
     this.previewWrapper = styles.previewWrapper();
     //initial value preview img style
     this.previewImg = styles.previewImg({ loaded, operation });
     //initial value img style
     this.imgStyle = styles.img({ preview, loaded, operation });
-    //initial value picture style
 
+    this.imgStyles = styles.image({
+      preserveSize,
+      imgNodeWidth,
+      imgNodeHeight,
+      operation,
+    });
+
+    //initial value picture style
     this.picture = styles.picture({
       preserveSize,
       imgNodeWidth,
@@ -298,10 +341,6 @@ export default {
       const placeholderBackground = this.cloudProvider.config.placeholderBackground;
 
       if (loaded) {
-        this.loadedStyle = [this.className, "cloudimage-background", "loaded"]
-          .join(" ")
-          .trim();
-
         // updating preview wrapper style if page loaded
         this.previewWrapper = styles.previewWrapper();
         // updating preview img if page loaded
@@ -320,12 +359,9 @@ export default {
           placeholderBackground,
           operation,
         });
-      } else {
-        //if still loading change to loading
-        this.loadedStyle = [this.className, "cloudimage-background", "loading"]
-          .join(" ")
-          .trim();
       }
+      this.loadedStyle = `${this.className} cloudimage-background ${loaded ? 'loaded' : 'loading'}`
+        .trim();
     },
   },
 };
