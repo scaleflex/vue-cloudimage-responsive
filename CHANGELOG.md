@@ -14,7 +14,7 @@ Types of changes:
 
 > Date format: YYYY-MM-DD
 
-> If we have some "Breaking changes" we can mark it in message by `**BREAKING**` preffix, like:  
+> If we have some "Breaking changes" we can mark it in message by `**BREAKING**` preffix, like: 
 > `- **BREAKING**: Some message`
 
 -------------
@@ -25,6 +25,10 @@ Types of changes:
 - ...
 
 -------------
+## 2.0.0 - 2022-08-29
+### Changed
+- **BREAKING**: Upgrade to Vue 3
+
 ## 1.3.5 - 2022-04-26
 ### Fixed
 - Low preview image width
