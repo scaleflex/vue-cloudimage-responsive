@@ -4,7 +4,9 @@
     @show="handler"
   >
     <img
-        v-if="otherProps.disableAnimation"
+        v-if="properties.disableAnimation"
+        :src = "processedImage.cloudimgURL"
+        :srcset="cloudimgSRCSET"
         :alt="properties.alt" :style="imgStyles"
         v-bind:ratio="otherProps.ratio"
         @load="_onImgLoad"
@@ -35,7 +37,9 @@
 
   <template v-else-if="!server">
     <img
-      v-if="otherProps.disableAnimation"
+      v-if="properties.disableAnimation"
+      :src = "processedImage.cloudimgURL"
+      :srcset="cloudimgSRCSET"
       :alt="properties.alt"
       :style="imgStyles"
       v-bind:ratio="otherProps.ratio"
@@ -116,6 +120,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    disableAnimation: {
+      type: Boolean,
+      default: false,
+    }
   },
   data() {
     return {
@@ -144,7 +152,8 @@ export default {
         className: this.className,
         config: this.cloudProvider.config,
         onImgLoad: this.onImgLoad,
-        doNotReplaceURL: this.doNotReplaceURL
+        doNotReplaceURL: this.doNotReplaceURL,
+        disableAnimation: this.disableAnimation,
       },
       preserveSize: "",
       imgNodeWidth: "",
@@ -173,6 +182,8 @@ export default {
       ...otherProps
     } = getFilteredProps(this.properties);
 
+    console.log(otherProps);
+
     const {
       delay ,
     } = this.properties.config;
@@ -186,8 +197,8 @@ export default {
     }
 
     //initial loading style
-    this.loadedStyle = [this.className, "cloudimage-background", "loading"]
-      .join(" ").trim();
+    this.loadedStyle = `${this.className} cloudimage-background loading`
+      .trim();
     //initial value preview wrapper style
     this.previewWrapper = styles.previewWrapper();
     //initial value preview img style
@@ -349,8 +360,7 @@ export default {
           operation,
         });
       }
-      this.loadedStyle = [this.className, "cloudimage-background", "loading"]
-        .join(" ")
+      this.loadedStyle = `${this.className} cloudimage-background ${loaded ? 'loaded' : 'loading'}`
         .trim();
     },
   },
