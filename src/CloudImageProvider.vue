@@ -22,6 +22,7 @@ export default {
           this.cloudImageConfig.placeholderBackground || '#f4f4f4',
         baseURL: this.cloudImageConfig.baseUrl || this.cloudImageConfig.baseURL,
         ratio: 1.5,
+        delay: this.cloudImageConfig.delay || 0,
         exactSize: false,
         presets: this.cloudImageConfig.presets
           ? this.cloudImageConfig.presets

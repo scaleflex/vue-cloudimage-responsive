@@ -5,7 +5,7 @@
   >
     <img
         v-if="otherProps.disableAnimation"
-        :alt="alt" :style="imgStyles"
+        :alt="properties.alt" :style="imgStyles"
         v-bind:ratio="otherProps.ratio"
         @load="_onImgLoad"
       />
@@ -18,12 +18,12 @@
         <img
           :style="previewImg"
           v-bind:src="processedImage.previewCloudimgURL"
-          alt="low quality preview for {{alt}}"
+          :alt="'low quality preview for '+ properties.alt"
           @load="onPreviewLoaded"
         />
       </div>
       <img
-        v-bind:alt="alt"
+        v-bind:alt="properties.alt"
         :style="imgStyle"
         v-bind:src="processedImage.cloudimgURL"
         v-bind:ratio="otherProps.ratio"
@@ -36,7 +36,7 @@
   <template v-else-if="!server">
     <img
       v-if="otherProps.disableAnimation"
-      :alt="alt"
+      :alt="properties.alt"
       :style="imgStyles"
       v-bind:ratio="otherProps.ratio"
       @load="_onImgLoad"
@@ -52,12 +52,12 @@
         <img
           :style="previewImg"
           v-bind:src="processedImage.previewCloudimgURL"
-          alt="low quality preview for {{alt}}"
+          :alt="'low quality preview for '+ properties.alt"
           @load="onPreviewLoaded"
         />
       </div>
       <img
-        v-bind:alt="alt"
+        v-bind:alt="properties.alt"
         :style="imgStyle"
         v-bind:src="processedImage.cloudimgURL"
         v-bind:ratio="otherProps.ratio"
@@ -174,8 +174,8 @@ export default {
     } = getFilteredProps(this.properties);
 
     const {
-      config: { delay },
-    } = this.cloudProvider;
+      delay ,
+    } = this.properties.config;
 
     if (typeof delay !== "undefined") {
       setTimeout(() => {
