@@ -1,33 +1,42 @@
-const babel = require('rollup-plugin-babel')
-const commonjs = require('rollup-plugin-commonjs')
 const vue = require('rollup-plugin-vue')
 const pkg = require('./package.json')
+const { terser } = require('rollup-plugin-terser')
 
 const banner = `/*
  * vue-cloudimage-responsive v${pkg.version}
  *
  * @license
- * Copyright 2020, Scaleflex
+ * Copyright 2022, Scaleflex
  * Released under the MIT License
  */`
 
 module.exports = {
     input: 'src/index.js',
     output: [
-        { file: 'dist/index.cjs.js', format: 'cjs', banner, exports: 'named' },
-        { file: 'dist/index.es.js', format: 'es', banner }
-    ],
+        {
+          file: pkg.main,
+          format: 'cjs',
+          exports: 'named',
+          sourcemap: false,
+          banner
+        },
+        {
+          file: pkg.module,
+          format: 'es',
+          exports: 'named',
+          sourcemap: false,
+          banner,
+        }
+      ],
     external: [
         'vue',
         'lodash.throttle',
         'core-js',
-        'cloudimage-responsive-utils'
+        'cloudimage-responsive-utils',
+        'throttle-debounce'
     ],
     plugins: [
-        commonjs(),
         vue(),
-        babel({
-            runtimeHelpers: true
-        })
+        terser(),
     ]
 }

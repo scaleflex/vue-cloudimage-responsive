@@ -156,20 +156,21 @@ or using yarn
 ## <a name="initialize"></a>Step 2: Initialize
 
 After installing the vue-cloudimage-responsive lib, simply initialize it with your **token** and the **baseURL**
-of your image storage with **CloudimageProvider**:
+of your image storage with **CloudImageProvider**:
 create vue instance a fle called main.js
 
 ```js
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
-import VueLazyload from 'vue-lazyload'
+import VueLazyload from 'vue-lazyload';
 
-Vue.use(VueLazyload, {
+const app = createApp(App);
+
+app.use(VueLazyload, {
   lazyComponent: true
-})
-new Vue({
-  render: h => h(App)
-}).$mount('#app')
+});
+
+app.mount('#app');
 ```
 
 ```jsx
@@ -183,7 +184,6 @@ new Vue({
 </template>
 
 <script>
-import Vue from 'vue';
 import Img, { CloudImageProvider } from 'vue-cloudimage-responsive';
 
 const cloudimageConfig = {
@@ -192,11 +192,17 @@ const cloudimageConfig = {
 };
 
 export default{
-    components: {
+  name: "app",
+  components: {
     CloudImageProvider,
-    Img
-    }
-}
+    Img,
+  },
+  data() { 
+    return { 
+      cloudimageConfig
+    };
+  },
+},
 </script>
 ```
 
@@ -432,6 +438,13 @@ A function to be executed after the image is loaded
   src="dino-reichmuth-1.jpg"
   onImgLoad={(params)=>{console.log(params);}}/>
 ```
+
+### disableAnimation
+
+###### Type: **Boolean** | Default: **false** | _optional_
+
+If set, the plugin will disable the animation for the Img and render only a single img tag.
+
 ### width
 
 ###### Type: **String** (e.g. 300px, 20vw) | Default: **undefined**
