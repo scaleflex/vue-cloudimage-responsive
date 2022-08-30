@@ -25,6 +25,10 @@ Types of changes:
 - ...
 
 -------------
+## 2.0.1 - 2022-08-30
+### Changed
+- minify the package
+
 ## 2.0.0 - 2022-08-29
 ### Changed
 - **BREAKING**: Upgrade to Vue 3
