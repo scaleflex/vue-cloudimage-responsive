@@ -11,32 +11,32 @@ const banner = `/*
  */`
 
 module.exports = {
-    input: 'src/index.js',
-    output: [
-        {
-          file: pkg.main,
-          format: 'cjs',
-          exports: 'named',
-          sourcemap: false,
-          banner
-        },
-        {
-          file: pkg.module,
-          format: 'es',
-          exports: 'named',
-          sourcemap: false,
-          banner,
-        }
-      ],
-    external: [
-        'vue',
-        'lodash.throttle',
-        'core-js',
-        'cloudimage-responsive-utils',
-        'throttle-debounce'
-    ],
-    plugins: [
-        vue(),
-        terser(),
-    ]
+  input: 'src/index.js',
+  output: [
+    {
+      file: pkg.main,
+      format: 'cjs',
+      exports: 'named',
+      sourcemap: false,
+      banner
+    },
+    {
+      file: pkg.module,
+      format: 'es',
+      exports: 'named',
+      sourcemap: false,
+      banner,
+    }
+  ],
+  external: [
+    'vue',
+    'lodash.throttle',
+    'core-js',
+    'cloudimage-responsive-utils',
+    'throttle-debounce'
+  ],
+  plugins: [
+    vue(),
+    terser(),
+  ]
 }
