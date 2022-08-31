@@ -182,8 +182,6 @@ export default {
       ...otherProps
     } = getFilteredProps(this.properties);
 
-    console.log(otherProps);
-
     const {
       delay ,
     } = this.properties.config;
