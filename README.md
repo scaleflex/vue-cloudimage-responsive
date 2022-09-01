@@ -445,6 +445,12 @@ A function to be executed after the image is loaded
 
 If set, the plugin will disable the animation for the Img and render only a single img tag.
 
+### doNotReplaceURL
+
+###### Type: **bool** | Default: **false**
+
+If set to **true** the plugin will only add query params to the given source of image.
+
 ### width
 
 ###### Type: **String** (e.g. 300px, 20vw) | Default: **undefined**
@@ -467,11 +473,6 @@ Multiple params can be applied, separated by "`&`" e.g. **wat_scale=35&wat_gravi
 ```javascript
 params = 'gray=1&bright=10'
 ```
-### doNotReplaceURL
-
-###### Type: **bool** | Default: **false**
-
-If set to **true** the plugin will only add query params to the given source of image.
 
 #### alternative syntax: type: **Object**
 
