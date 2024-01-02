@@ -25,6 +25,10 @@ Types of changes:
 - ...
 
 -------------
+## 2.0.3 - 2024-01-02
+### Fixed
+- typo in readme
+
 ## 2.0.2 - 2024-01-02
 ### Fixed
 - apiVersion config
