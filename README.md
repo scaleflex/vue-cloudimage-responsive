@@ -255,7 +255,7 @@ Your image folder on server, this alows to shorten your origin image URLs.
 
 ### apiVersion
 
-###### Type: **String** |Default: **'v7'** | _optional_
+###### Type: **String** |Default: **null** | _optional_
 
 Allow to use a specific version of API.
 
