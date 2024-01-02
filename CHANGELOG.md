@@ -25,6 +25,10 @@ Types of changes:
 - ...
 
 -------------
+## 2.0.2 - 2024-01-02
+### Fixed
+- apiVersion config
+
 ## 2.0.1 - 2022-08-30
 ### Changed
 - minify the package
